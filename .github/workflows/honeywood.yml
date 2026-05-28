@@ -1,0 +1,41 @@
+name: Honeywood daily letter
+
+on:
+  schedule:
+    # 11:00 UTC ≈ 12:00 Lisbon in summer (WEST); 11:00 in winter (WET).
+    - cron: '0 11 * * *'
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'Send date override (YYYY-MM-DD). Blank = today.'
+        required: false
+      dry_run:
+        description: 'Render only, do not send (true/false).'
+        required: false
+        default: 'false'
+
+concurrency:
+  group: honeywood-send
+  cancel-in-progress: false
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Send the day's letters
+        working-directory: source
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          RECIPIENT: ${{ secrets.RECIPIENT }}
+          SEND_DATE: ${{ github.event.inputs.date }}
+          DRY_RUN: ${{ github.event.inputs.dry_run }}
+        run: |
+          args=""
+          [ -n "$SEND_DATE" ] && args="$args --date $SEND_DATE"
+          [ "$DRY_RUN" = "true" ] && args="$args --dry-run"
+          python3 send.py $args

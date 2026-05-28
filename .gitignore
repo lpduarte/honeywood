@@ -1,0 +1,22 @@
+# Secrets — never commit
+.env
+*.secret
+
+# Large source material (re-downloadable from archive.org)
+source/jp2/
+source/jp2.zip
+source/honeywood.epub
+source/honeywood.txt
+source/epub_extracted/
+source/honeywood_full.txt
+
+# Generated previews / screenshots
+*.png
+.playwright-mcp/
+
+# Python
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
