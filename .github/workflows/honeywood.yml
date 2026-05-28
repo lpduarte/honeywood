@@ -49,6 +49,10 @@ jobs:
       - name: Persist sent log
         if: github.event.inputs.dry_run != 'true'
         run: |
+          if [ ! -f data/sent_log.json ]; then
+            echo "No sent_log.json (nothing sent); nothing to persist."
+            exit 0
+          fi
           git add data/sent_log.json
           if git diff --cached --quiet; then
             echo "sent_log.json unchanged; nothing to commit."
