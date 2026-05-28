@@ -69,13 +69,14 @@ def main():
         return 0
 
     # Safety: never send a letter whose text hasn't been cleaned (would be raw OCR).
+    # Letters whose mapped date precedes the project's first scheduled send are pre-start:
+    # the cron never reaches them, so an uncleaned one is skipped (no-op) rather than a failure.
+    # An uncleaned letter ON/AFTER go-live is a real bug and fails loudly.
+    FIRST_SEND = '2026-06-14'
     raw = [l['id'] for l in letters if not l.get('cleaned')]
     if raw:
-        first_send = min((r['send_date'] for r in recs if r.get('cleaned') and r['send_date']), default=None)
-        if first_send and args.date < first_send:
-            # Pre-start letters (book dates before the project began) are intentionally
-            # never sent, so a manual run for such a date is a graceful no-op, not a failure.
-            print(f"{args.date} is before the first send date ({first_send}); "
+        if args.date < FIRST_SEND:
+            print(f"{args.date} is before the project's first send date ({FIRST_SEND}); "
                   f"these pre-start letters are intentionally not sent. Skipping.")
             return 0
         print(f"ERROR: {args.date} has uncleaned letters {raw}; refusing to send.", file=sys.stderr)
