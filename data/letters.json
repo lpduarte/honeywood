@@ -276,8 +276,32 @@
     "chapter_start": false
   },
   {
-    "id": "L017-0",
+    "id": "L015-1x",
     "seq": 12,
+    "page": 15,
+    "kind": "letter",
+    "book_date": "1924-03-09",
+    "send_date": "2026-03-09",
+    "from_key": "SPINLOVE",
+    "from": "James Spinlove",
+    "from_role": null,
+    "to_key": "BRASH",
+    "to": "Sir Leslie Brash",
+    "to_role": null,
+    "s_raw": "",
+    "r_raw": "",
+    "date_raw": "EXTRA",
+    "body": "",
+    "commentary": null,
+    "body_chars": 0,
+    "needs_date": false,
+    "chapter": "Sketches and Estimates",
+    "extra": true,
+    "chapter_start": false
+  },
+  {
+    "id": "L017-0",
+    "seq": 13,
     "page": 17,
     "kind": "letter",
     "book_date": "1924-03-14",
@@ -300,7 +324,7 @@
   },
   {
     "id": "L017-1",
-    "seq": 13,
+    "seq": 14,
     "page": 17,
     "kind": "letter",
     "book_date": "1924-03-17",
@@ -323,7 +347,7 @@
   },
   {
     "id": "L017-2",
-    "seq": 14,
+    "seq": 15,
     "page": 17,
     "kind": "letter",
     "book_date": "1924-03-22",
@@ -346,7 +370,7 @@
   },
   {
     "id": "L018-0",
-    "seq": 15,
+    "seq": 16,
     "page": 18,
     "kind": "letter",
     "book_date": "1924-03-24",
@@ -369,7 +393,7 @@
   },
   {
     "id": "L018-1",
-    "seq": 16,
+    "seq": 17,
     "page": 18,
     "kind": "letter",
     "book_date": "1924-03-28",
@@ -392,7 +416,7 @@
   },
   {
     "id": "L019-0",
-    "seq": 17,
+    "seq": 18,
     "page": 19,
     "kind": "letter",
     "book_date": "1924-02-02",
@@ -415,7 +439,7 @@
   },
   {
     "id": "L019-1",
-    "seq": 18,
+    "seq": 19,
     "page": 19,
     "kind": "letter",
     "book_date": "1924-03-28",
@@ -438,7 +462,7 @@
   },
   {
     "id": "L020-0",
-    "seq": 19,
+    "seq": 20,
     "page": 20,
     "kind": "letter",
     "book_date": "1924-03-28",
@@ -461,7 +485,7 @@
   },
   {
     "id": "L020-1",
-    "seq": 20,
+    "seq": 21,
     "page": 20,
     "kind": "letter",
     "book_date": "1924-03-29",
@@ -484,7 +508,7 @@
   },
   {
     "id": "L020-2",
-    "seq": 21,
+    "seq": 22,
     "page": 20,
     "kind": "letter",
     "book_date": "1924-03-31",
@@ -507,7 +531,7 @@
   },
   {
     "id": "L020-3",
-    "seq": 22,
+    "seq": 23,
     "page": 20,
     "kind": "letter",
     "book_date": "1924-04-02",
@@ -530,7 +554,7 @@
   },
   {
     "id": "L020-4",
-    "seq": 23,
+    "seq": 24,
     "page": 20,
     "kind": "letter",
     "book_date": "1924-04-12",
@@ -553,7 +577,7 @@
   },
   {
     "id": "L021-0",
-    "seq": 24,
+    "seq": 25,
     "page": 21,
     "kind": "letter",
     "book_date": "1924-04-16",
@@ -576,7 +600,7 @@
   },
   {
     "id": "L021-1",
-    "seq": 25,
+    "seq": 26,
     "page": 21,
     "kind": "letter",
     "book_date": "1924-04-16",
@@ -599,7 +623,7 @@
   },
   {
     "id": "L021-2",
-    "seq": 26,
+    "seq": 27,
     "page": 21,
     "kind": "enclosure",
     "book_date": "1924-04-15",
@@ -621,8 +645,32 @@
     "chapter_start": false
   },
   {
+    "id": "L021-2x",
+    "seq": 28,
+    "page": 21,
+    "kind": "letter",
+    "book_date": "1924-04-16",
+    "send_date": "2026-04-16",
+    "from_key": "REAKER & SMITH",
+    "from": "Reaker & Smith",
+    "from_role": null,
+    "to_key": "SPINLOVE",
+    "to": "James Spinlove",
+    "to_role": null,
+    "s_raw": "",
+    "r_raw": "",
+    "date_raw": "EXTRA",
+    "body": "",
+    "commentary": null,
+    "body_chars": 0,
+    "needs_date": false,
+    "chapter": "Catastrophe of the Trial Holes",
+    "extra": true,
+    "chapter_start": false
+  },
+  {
     "id": "L022-0",
-    "seq": 27,
+    "seq": 29,
     "page": 22,
     "kind": "letter",
     "book_date": "1924-04-17",
@@ -645,7 +693,7 @@
   },
   {
     "id": "L022-1",
-    "seq": 28,
+    "seq": 30,
     "page": 22,
     "kind": "letter",
     "book_date": "1924-04-17",
@@ -668,7 +716,7 @@
   },
   {
     "id": "L022-2",
-    "seq": 29,
+    "seq": 31,
     "page": 22,
     "kind": "letter",
     "book_date": "1924-04-17",
@@ -691,7 +739,7 @@
   },
   {
     "id": "L023-0",
-    "seq": 30,
+    "seq": 32,
     "page": 23,
     "kind": "letter",
     "book_date": "1924-04-17",
@@ -714,7 +762,7 @@
   },
   {
     "id": "L023-1",
-    "seq": 31,
+    "seq": 33,
     "page": 23,
     "kind": "letter",
     "book_date": "1924-04-19",
@@ -736,8 +784,32 @@
     "chapter_start": false
   },
   {
+    "id": "L023-1x",
+    "seq": 34,
+    "page": 23,
+    "kind": "letter",
+    "book_date": "1924-04-19",
+    "send_date": "2026-04-19",
+    "from_key": "REAKER & SMITH",
+    "from": "Reaker & Smith",
+    "from_role": null,
+    "to_key": "SPINLOVE",
+    "to": "James Spinlove",
+    "to_role": null,
+    "s_raw": "",
+    "r_raw": "",
+    "date_raw": "EXTRA",
+    "body": "",
+    "commentary": null,
+    "body_chars": 0,
+    "needs_date": false,
+    "chapter": "Catastrophe of the Trial Holes",
+    "extra": true,
+    "chapter_start": false
+  },
+  {
     "id": "L024-0",
-    "seq": 32,
+    "seq": 35,
     "page": 24,
     "kind": "letter",
     "book_date": "1924-04-22",
@@ -760,7 +832,7 @@
   },
   {
     "id": "L024-1",
-    "seq": 33,
+    "seq": 36,
     "page": 24,
     "kind": "letter",
     "book_date": "1924-04-22",
@@ -783,7 +855,7 @@
   },
   {
     "id": "L025-0",
-    "seq": 34,
+    "seq": 37,
     "page": 25,
     "kind": "letter",
     "book_date": "1924-04-24",
@@ -806,7 +878,7 @@
   },
   {
     "id": "L026-0",
-    "seq": 35,
+    "seq": 38,
     "page": 26,
     "kind": "letter",
     "book_date": "1924-04-24",
@@ -829,7 +901,7 @@
   },
   {
     "id": "L026-1",
-    "seq": 36,
+    "seq": 39,
     "page": 26,
     "kind": "letter",
     "book_date": "1924-04-25",
@@ -852,7 +924,7 @@
   },
   {
     "id": "L026-2",
-    "seq": 37,
+    "seq": 40,
     "page": 26,
     "kind": "letter",
     "book_date": "1924-04-28",
@@ -875,7 +947,7 @@
   },
   {
     "id": "L027-0",
-    "seq": 38,
+    "seq": 41,
     "page": 27,
     "kind": "letter",
     "book_date": "1924-04-30",
@@ -898,7 +970,7 @@
   },
   {
     "id": "L028-0",
-    "seq": 39,
+    "seq": 42,
     "page": 28,
     "kind": "letter",
     "book_date": "1924-05-02",
@@ -921,7 +993,7 @@
   },
   {
     "id": "L028-1",
-    "seq": 40,
+    "seq": 43,
     "page": 28,
     "kind": "letter",
     "book_date": "1924-06-14",
@@ -944,7 +1016,7 @@
   },
   {
     "id": "L029-0",
-    "seq": 41,
+    "seq": 44,
     "page": 29,
     "kind": "letter",
     "book_date": "1924-06-14",
@@ -967,7 +1039,7 @@
   },
   {
     "id": "L029-1",
-    "seq": 42,
+    "seq": 45,
     "page": 29,
     "kind": "letter",
     "book_date": "1924-06-16",
@@ -990,7 +1062,7 @@
   },
   {
     "id": "L029-2",
-    "seq": 43,
+    "seq": 46,
     "page": 29,
     "kind": "letter",
     "book_date": "1924-06-17",
@@ -1013,7 +1085,7 @@
   },
   {
     "id": "L029-3",
-    "seq": 44,
+    "seq": 47,
     "page": 29,
     "kind": "letter",
     "book_date": "1924-06-20",
@@ -1036,7 +1108,7 @@
   },
   {
     "id": "L030-0",
-    "seq": 45,
+    "seq": 48,
     "page": 30,
     "kind": "letter",
     "book_date": "1924-06-20",
@@ -1059,7 +1131,7 @@
   },
   {
     "id": "L030-1",
-    "seq": 46,
+    "seq": 49,
     "page": 30,
     "kind": "letter",
     "book_date": "1924-06-21",
@@ -1082,7 +1154,7 @@
   },
   {
     "id": "L031-0",
-    "seq": 47,
+    "seq": 50,
     "page": 31,
     "kind": "letter",
     "book_date": "1924-06-23",
@@ -1105,7 +1177,7 @@
   },
   {
     "id": "L031-1",
-    "seq": 48,
+    "seq": 51,
     "page": 31,
     "kind": "letter",
     "book_date": "1924-07-10",
@@ -1128,7 +1200,7 @@
   },
   {
     "id": "L031-2",
-    "seq": 49,
+    "seq": 52,
     "page": 31,
     "kind": "letter",
     "book_date": "1924-07-29",
@@ -1151,7 +1223,7 @@
   },
   {
     "id": "L031-3",
-    "seq": 50,
+    "seq": 53,
     "page": 31,
     "kind": "letter",
     "book_date": "1924-07-30",
@@ -1174,7 +1246,7 @@
   },
   {
     "id": "L032-0",
-    "seq": 51,
+    "seq": 54,
     "page": 32,
     "kind": "letter",
     "book_date": "1924-08-01",
@@ -1197,7 +1269,7 @@
   },
   {
     "id": "L032-1",
-    "seq": 52,
+    "seq": 55,
     "page": 32,
     "kind": "letter",
     "book_date": "1924-08-01",
@@ -1220,7 +1292,7 @@
   },
   {
     "id": "L032-2",
-    "seq": 53,
+    "seq": 56,
     "page": 32,
     "kind": "letter",
     "book_date": "1924-08-01",
@@ -1243,7 +1315,7 @@
   },
   {
     "id": "L033-0",
-    "seq": 54,
+    "seq": 57,
     "page": 33,
     "kind": "letter",
     "book_date": "1924-08-02",
@@ -1266,7 +1338,7 @@
   },
   {
     "id": "L033-1",
-    "seq": 55,
+    "seq": 58,
     "page": 33,
     "kind": "telegram",
     "book_date": "1924-08-02",
@@ -1289,7 +1361,7 @@
   },
   {
     "id": "L033-2",
-    "seq": 56,
+    "seq": 59,
     "page": 33,
     "kind": "letter",
     "book_date": "1924-08-02",
@@ -1312,7 +1384,7 @@
   },
   {
     "id": "L035-0",
-    "seq": 57,
+    "seq": 60,
     "page": 35,
     "kind": "letter",
     "book_date": "1924-08-04",
@@ -1335,7 +1407,7 @@
   },
   {
     "id": "L036-0",
-    "seq": 58,
+    "seq": 61,
     "page": 36,
     "kind": "letter",
     "book_date": "1924-08-05",
@@ -1358,7 +1430,7 @@
   },
   {
     "id": "L036-1",
-    "seq": 59,
+    "seq": 62,
     "page": 36,
     "kind": "letter",
     "book_date": "1924-08-07",
@@ -1381,7 +1453,7 @@
   },
   {
     "id": "L037-0",
-    "seq": 60,
+    "seq": 63,
     "page": 37,
     "kind": "letter",
     "book_date": "1924-08-08",
@@ -1404,7 +1476,7 @@
   },
   {
     "id": "L037-1",
-    "seq": 61,
+    "seq": 64,
     "page": 37,
     "kind": "letter",
     "book_date": "1924-08-08",
@@ -1427,7 +1499,7 @@
   },
   {
     "id": "L037-2",
-    "seq": 62,
+    "seq": 65,
     "page": 37,
     "kind": "letter",
     "book_date": "1924-08-09",
@@ -1450,7 +1522,7 @@
   },
   {
     "id": "L038-0",
-    "seq": 63,
+    "seq": 66,
     "page": 38,
     "kind": "letter",
     "book_date": "1924-08-11",
@@ -1473,7 +1545,7 @@
   },
   {
     "id": "L038-1",
-    "seq": 64,
+    "seq": 67,
     "page": 38,
     "kind": "letter",
     "book_date": "1924-08-11",
@@ -1496,7 +1568,7 @@
   },
   {
     "id": "L038-2",
-    "seq": 65,
+    "seq": 68,
     "page": 38,
     "kind": "letter",
     "book_date": "1924-08-15",
@@ -1519,7 +1591,7 @@
   },
   {
     "id": "L039-0",
-    "seq": 66,
+    "seq": 69,
     "page": 39,
     "kind": "letter",
     "book_date": "1924-08-22",
@@ -1542,7 +1614,7 @@
   },
   {
     "id": "L039-1",
-    "seq": 67,
+    "seq": 70,
     "page": 39,
     "kind": "letter",
     "book_date": "1924-08-23",
@@ -1565,7 +1637,7 @@
   },
   {
     "id": "L039-2",
-    "seq": 68,
+    "seq": 71,
     "page": 39,
     "kind": "letter",
     "book_date": "1924-08-23",
@@ -1588,7 +1660,7 @@
   },
   {
     "id": "L040-0",
-    "seq": 69,
+    "seq": 72,
     "page": 40,
     "kind": "letter",
     "book_date": "1924-08-23",
@@ -1611,7 +1683,7 @@
   },
   {
     "id": "L041-0",
-    "seq": 70,
+    "seq": 73,
     "page": 41,
     "kind": "letter",
     "book_date": "1924-08-23",
@@ -1634,7 +1706,7 @@
   },
   {
     "id": "L041-1",
-    "seq": 71,
+    "seq": 74,
     "page": 41,
     "kind": "letter",
     "book_date": "1924-08-25",
@@ -1657,7 +1729,7 @@
   },
   {
     "id": "L041-2",
-    "seq": 72,
+    "seq": 75,
     "page": 41,
     "kind": "letter",
     "book_date": "1924-08-25",
@@ -1680,7 +1752,7 @@
   },
   {
     "id": "L042-0",
-    "seq": 73,
+    "seq": 76,
     "page": 42,
     "kind": "letter",
     "book_date": "1924-08-26",
@@ -1703,7 +1775,7 @@
   },
   {
     "id": "L042-1",
-    "seq": 74,
+    "seq": 77,
     "page": 42,
     "kind": "letter",
     "book_date": "1924-08-26",
@@ -1726,7 +1798,7 @@
   },
   {
     "id": "L042-2",
-    "seq": 75,
+    "seq": 78,
     "page": 42,
     "kind": "letter",
     "book_date": "1924-08-27",
@@ -1749,7 +1821,7 @@
   },
   {
     "id": "L042-3",
-    "seq": 76,
+    "seq": 79,
     "page": 42,
     "kind": "enclosure",
     "book_date": "1924-08-26",
@@ -1772,7 +1844,7 @@
   },
   {
     "id": "L043-0",
-    "seq": 77,
+    "seq": 80,
     "page": 43,
     "kind": "letter",
     "book_date": "1924-08-28",
@@ -1795,7 +1867,7 @@
   },
   {
     "id": "L043-1",
-    "seq": 78,
+    "seq": 81,
     "page": 43,
     "kind": "letter",
     "book_date": "1924-08-29",
@@ -1818,7 +1890,7 @@
   },
   {
     "id": "L043-1x",
-    "seq": 79,
+    "seq": 82,
     "page": 43,
     "kind": "letter",
     "book_date": "1924-08-30",
@@ -1842,7 +1914,7 @@
   },
   {
     "id": "L044-0",
-    "seq": 80,
+    "seq": 83,
     "page": 44,
     "kind": "letter",
     "book_date": "1924-09-01",
@@ -1865,7 +1937,7 @@
   },
   {
     "id": "L044-1",
-    "seq": 81,
+    "seq": 84,
     "page": 44,
     "kind": "letter",
     "book_date": "1924-09-03",
@@ -1888,7 +1960,7 @@
   },
   {
     "id": "L044-1x",
-    "seq": 82,
+    "seq": 85,
     "page": 44,
     "kind": "letter",
     "book_date": "1924-09-03",
@@ -1912,7 +1984,7 @@
   },
   {
     "id": "L045-0",
-    "seq": 83,
+    "seq": 86,
     "page": 45,
     "kind": "letter",
     "book_date": "1924-09-04",
@@ -1935,7 +2007,7 @@
   },
   {
     "id": "L046-0",
-    "seq": 84,
+    "seq": 87,
     "page": 46,
     "kind": "letter",
     "book_date": "1924-09-05",
@@ -1958,7 +2030,7 @@
   },
   {
     "id": "L046-1",
-    "seq": 85,
+    "seq": 88,
     "page": 46,
     "kind": "letter",
     "book_date": "1924-09-05",
@@ -1981,7 +2053,7 @@
   },
   {
     "id": "L046-2",
-    "seq": 86,
+    "seq": 89,
     "page": 46,
     "kind": "letter",
     "book_date": "1924-09-08",
@@ -2004,7 +2076,7 @@
   },
   {
     "id": "L047-0",
-    "seq": 87,
+    "seq": 90,
     "page": 47,
     "kind": "letter",
     "book_date": "1924-09-10",
@@ -2027,7 +2099,7 @@
   },
   {
     "id": "L047-1",
-    "seq": 88,
+    "seq": 91,
     "page": 47,
     "kind": "letter",
     "book_date": "1924-09-16",
@@ -2050,7 +2122,7 @@
   },
   {
     "id": "L047-1x",
-    "seq": 89,
+    "seq": 92,
     "page": 47,
     "kind": "letter",
     "book_date": "1924-09-17",
@@ -2074,7 +2146,7 @@
   },
   {
     "id": "L047-1y",
-    "seq": 90,
+    "seq": 93,
     "page": 47,
     "kind": "letter",
     "book_date": "1924-09-17",
@@ -2098,7 +2170,7 @@
   },
   {
     "id": "L048-0",
-    "seq": 91,
+    "seq": 94,
     "page": 48,
     "kind": "letter",
     "book_date": "1924-09-19",
@@ -2121,7 +2193,7 @@
   },
   {
     "id": "L048-0x",
-    "seq": 92,
+    "seq": 95,
     "page": 49,
     "kind": "letter",
     "book_date": "1924-09-20",
@@ -2145,7 +2217,7 @@
   },
   {
     "id": "L048-0y",
-    "seq": 93,
+    "seq": 96,
     "page": 49,
     "kind": "letter",
     "book_date": "1924-09-24",
@@ -2169,7 +2241,7 @@
   },
   {
     "id": "L048-0z",
-    "seq": 94,
+    "seq": 97,
     "page": 49,
     "kind": "letter",
     "book_date": "1924-09-24",
@@ -2193,7 +2265,7 @@
   },
   {
     "id": "L050-0",
-    "seq": 95,
+    "seq": 98,
     "page": 50,
     "kind": "letter",
     "book_date": "1924-09-25",
@@ -2216,7 +2288,7 @@
   },
   {
     "id": "L050-1",
-    "seq": 96,
+    "seq": 99,
     "page": 50,
     "kind": "letter",
     "book_date": "1924-09-27",
@@ -2239,7 +2311,7 @@
   },
   {
     "id": "L050-2",
-    "seq": 97,
+    "seq": 100,
     "page": 50,
     "kind": "letter",
     "book_date": "1924-09-29",
@@ -2262,7 +2334,7 @@
   },
   {
     "id": "L050-3",
-    "seq": 98,
+    "seq": 101,
     "page": 50,
     "kind": "letter",
     "book_date": "1924-10-06",
@@ -2285,7 +2357,7 @@
   },
   {
     "id": "L050-4",
-    "seq": 99,
+    "seq": 102,
     "page": 50,
     "kind": "letter",
     "book_date": "1924-10-08",
@@ -2308,7 +2380,7 @@
   },
   {
     "id": "L051-0",
-    "seq": 100,
+    "seq": 103,
     "page": 51,
     "kind": "letter",
     "book_date": "1924-10-09",
@@ -2331,7 +2403,7 @@
   },
   {
     "id": "L051-0x",
-    "seq": 101,
+    "seq": 104,
     "page": 51,
     "kind": "letter",
     "book_date": "1924-10-10",
@@ -2355,7 +2427,7 @@
   },
   {
     "id": "L051-0y",
-    "seq": 102,
+    "seq": 105,
     "page": 51,
     "kind": "letter",
     "book_date": "1924-10-15",
@@ -2379,7 +2451,7 @@
   },
   {
     "id": "L052-0",
-    "seq": 103,
+    "seq": 106,
     "page": 52,
     "kind": "letter",
     "book_date": "1924-10-10",
@@ -2402,7 +2474,7 @@
   },
   {
     "id": "L052-1",
-    "seq": 104,
+    "seq": 107,
     "page": 52,
     "kind": "letter",
     "book_date": "1924-10-11",
@@ -2425,7 +2497,7 @@
   },
   {
     "id": "L052-2",
-    "seq": 105,
+    "seq": 108,
     "page": 52,
     "kind": "letter",
     "book_date": "1924-10-13",
@@ -2448,7 +2520,7 @@
   },
   {
     "id": "L053-0",
-    "seq": 106,
+    "seq": 109,
     "page": 53,
     "kind": "letter",
     "book_date": "1924-10-10",
@@ -2471,7 +2543,7 @@
   },
   {
     "id": "L053-1",
-    "seq": 107,
+    "seq": 110,
     "page": 53,
     "kind": "letter",
     "book_date": "1924-10-14",
@@ -2494,7 +2566,7 @@
   },
   {
     "id": "L053-1x",
-    "seq": 108,
+    "seq": 111,
     "page": 53,
     "kind": "letter",
     "book_date": "1924-10-14",
@@ -2518,7 +2590,7 @@
   },
   {
     "id": "L054-0",
-    "seq": 109,
+    "seq": 112,
     "page": 54,
     "kind": "letter",
     "book_date": "1924-10-16",
@@ -2541,7 +2613,7 @@
   },
   {
     "id": "L054-1",
-    "seq": 110,
+    "seq": 113,
     "page": 54,
     "kind": "letter",
     "book_date": "1924-10-17",
@@ -2564,7 +2636,7 @@
   },
   {
     "id": "L054-2",
-    "seq": 111,
+    "seq": 114,
     "page": 54,
     "kind": "letter",
     "book_date": "1924-10-17",
@@ -2587,7 +2659,7 @@
   },
   {
     "id": "L055-0",
-    "seq": 112,
+    "seq": 115,
     "page": 55,
     "kind": "letter",
     "book_date": "1924-10-18",
@@ -2610,7 +2682,7 @@
   },
   {
     "id": "L055-1",
-    "seq": 113,
+    "seq": 116,
     "page": 55,
     "kind": "letter",
     "book_date": "1924-10-20",
@@ -2633,7 +2705,7 @@
   },
   {
     "id": "L055-1x",
-    "seq": 114,
+    "seq": 117,
     "page": 55,
     "kind": "letter",
     "book_date": "1924-10-21",
@@ -2657,7 +2729,7 @@
   },
   {
     "id": "L056-0",
-    "seq": 115,
+    "seq": 118,
     "page": 56,
     "kind": "letter",
     "book_date": "1924-10-22",
@@ -2680,7 +2752,7 @@
   },
   {
     "id": "L056-0x",
-    "seq": 116,
+    "seq": 119,
     "page": 56,
     "kind": "letter",
     "book_date": "1924-10-21",
@@ -2704,7 +2776,7 @@
   },
   {
     "id": "L056-1",
-    "seq": 117,
+    "seq": 120,
     "page": 56,
     "kind": "letter",
     "book_date": "1924-10-22",
@@ -2727,7 +2799,7 @@
   },
   {
     "id": "L056-2",
-    "seq": 118,
+    "seq": 121,
     "page": 56,
     "kind": "letter",
     "book_date": "1924-10-23",
@@ -2750,7 +2822,7 @@
   },
   {
     "id": "L057-0",
-    "seq": 119,
+    "seq": 122,
     "page": 57,
     "kind": "letter",
     "book_date": "1924-10-25",
@@ -2773,7 +2845,7 @@
   },
   {
     "id": "L057-1",
-    "seq": 120,
+    "seq": 123,
     "page": 57,
     "kind": "letter",
     "book_date": "1924-10-27",
@@ -2796,7 +2868,7 @@
   },
   {
     "id": "L058-0",
-    "seq": 121,
+    "seq": 124,
     "page": 58,
     "kind": "letter",
     "book_date": "1924-10-28",
@@ -2819,7 +2891,7 @@
   },
   {
     "id": "L058-1",
-    "seq": 122,
+    "seq": 125,
     "page": 58,
     "kind": "letter",
     "book_date": "1924-10-29",
@@ -2842,7 +2914,7 @@
   },
   {
     "id": "L058-2",
-    "seq": 123,
+    "seq": 126,
     "page": 58,
     "kind": "letter",
     "book_date": "1924-10-30",
@@ -2865,7 +2937,7 @@
   },
   {
     "id": "L059-0",
-    "seq": 124,
+    "seq": 127,
     "page": 59,
     "kind": "letter",
     "book_date": "1924-10-31",
@@ -2888,7 +2960,7 @@
   },
   {
     "id": "L059-1",
-    "seq": 125,
+    "seq": 128,
     "page": 59,
     "kind": "letter",
     "book_date": "1924-11-01",
@@ -2911,7 +2983,7 @@
   },
   {
     "id": "L060-0",
-    "seq": 126,
+    "seq": 129,
     "page": 60,
     "kind": "letter",
     "book_date": "1924-11-06",
@@ -2934,7 +3006,7 @@
   },
   {
     "id": "L061-0",
-    "seq": 127,
+    "seq": 130,
     "page": 61,
     "kind": "letter",
     "book_date": "1924-11-08",
@@ -2957,7 +3029,7 @@
   },
   {
     "id": "L061-1",
-    "seq": 128,
+    "seq": 131,
     "page": 61,
     "kind": "letter",
     "book_date": "1924-11-08",
@@ -2980,7 +3052,7 @@
   },
   {
     "id": "L061-2",
-    "seq": 129,
+    "seq": 132,
     "page": 61,
     "kind": "letter",
     "book_date": "1924-11-10",
@@ -3003,7 +3075,7 @@
   },
   {
     "id": "L062-0",
-    "seq": 130,
+    "seq": 133,
     "page": 62,
     "kind": "letter",
     "book_date": "1924-11-12",
@@ -3026,7 +3098,7 @@
   },
   {
     "id": "L062-1",
-    "seq": 131,
+    "seq": 134,
     "page": 62,
     "kind": "enclosure",
     "book_date": "1924-11-08",
@@ -3049,7 +3121,7 @@
   },
   {
     "id": "L062-2",
-    "seq": 132,
+    "seq": 135,
     "page": 62,
     "kind": "letter",
     "book_date": "1924-11-14",
@@ -3072,7 +3144,7 @@
   },
   {
     "id": "L062-3",
-    "seq": 133,
+    "seq": 136,
     "page": 62,
     "kind": "enclosure",
     "book_date": "1924-11-14",
@@ -3095,7 +3167,7 @@
   },
   {
     "id": "L063-0",
-    "seq": 134,
+    "seq": 137,
     "page": 63,
     "kind": "letter",
     "book_date": "1924-11-14",
@@ -3118,7 +3190,7 @@
   },
   {
     "id": "L063-1",
-    "seq": 135,
+    "seq": 138,
     "page": 63,
     "kind": "letter",
     "book_date": "1924-11-15",
@@ -3141,7 +3213,7 @@
   },
   {
     "id": "L064-0",
-    "seq": 136,
+    "seq": 139,
     "page": 64,
     "kind": "letter",
     "book_date": "1924-11-17",
@@ -3164,7 +3236,7 @@
   },
   {
     "id": "L064-1",
-    "seq": 137,
+    "seq": 140,
     "page": 64,
     "kind": "letter",
     "book_date": "1924-11-19",
@@ -3187,7 +3259,7 @@
   },
   {
     "id": "L064-2",
-    "seq": 138,
+    "seq": 141,
     "page": 64,
     "kind": "letter",
     "book_date": "1924-11-20",
@@ -3210,7 +3282,7 @@
   },
   {
     "id": "L065-0",
-    "seq": 139,
+    "seq": 142,
     "page": 65,
     "kind": "letter",
     "book_date": "1924-11-22",
@@ -3233,7 +3305,7 @@
   },
   {
     "id": "L065-1",
-    "seq": 140,
+    "seq": 143,
     "page": 65,
     "kind": "letter",
     "book_date": "1924-11-24",
@@ -3256,7 +3328,7 @@
   },
   {
     "id": "L065-1x",
-    "seq": 141,
+    "seq": 144,
     "page": 65,
     "kind": "letter",
     "book_date": "1924-11-24",
@@ -3280,7 +3352,7 @@
   },
   {
     "id": "L065-2",
-    "seq": 142,
+    "seq": 145,
     "page": 65,
     "kind": "letter",
     "book_date": "1924-11-25",
@@ -3303,7 +3375,7 @@
   },
   {
     "id": "L066-0",
-    "seq": 143,
+    "seq": 146,
     "page": 66,
     "kind": "letter",
     "book_date": "1924-11-26",
@@ -3326,7 +3398,7 @@
   },
   {
     "id": "L066-1",
-    "seq": 144,
+    "seq": 147,
     "page": 66,
     "kind": "letter",
     "book_date": "1924-11-28",
@@ -3349,7 +3421,7 @@
   },
   {
     "id": "L066-2",
-    "seq": 145,
+    "seq": 148,
     "page": 66,
     "kind": "letter",
     "book_date": "1924-12-02",
@@ -3372,7 +3444,7 @@
   },
   {
     "id": "L067-0",
-    "seq": 146,
+    "seq": 149,
     "page": 67,
     "kind": "letter",
     "book_date": "1924-12-01",
@@ -3395,7 +3467,7 @@
   },
   {
     "id": "L067-0x",
-    "seq": 147,
+    "seq": 150,
     "page": 67,
     "kind": "letter",
     "book_date": "1924-12-04",
@@ -3419,7 +3491,7 @@
   },
   {
     "id": "L068-0",
-    "seq": 148,
+    "seq": 151,
     "page": 68,
     "kind": "letter",
     "book_date": "1924-12-14",
@@ -3442,7 +3514,7 @@
   },
   {
     "id": "L068-1",
-    "seq": 149,
+    "seq": 152,
     "page": 68,
     "kind": "letter",
     "book_date": "1924-12-19",
@@ -3465,7 +3537,7 @@
   },
   {
     "id": "L069-0",
-    "seq": 150,
+    "seq": 153,
     "page": 69,
     "kind": "letter",
     "book_date": "1924-12-22",
@@ -3488,7 +3560,7 @@
   },
   {
     "id": "L070-0",
-    "seq": 151,
+    "seq": 154,
     "page": 70,
     "kind": "letter",
     "book_date": "1924-12-23",
@@ -3511,7 +3583,7 @@
   },
   {
     "id": "L070-1",
-    "seq": 152,
+    "seq": 155,
     "page": 70,
     "kind": "letter",
     "book_date": "1924-12-21",
@@ -3534,7 +3606,7 @@
   },
   {
     "id": "L070-2",
-    "seq": 153,
+    "seq": 156,
     "page": 70,
     "kind": "letter",
     "book_date": "1924-12-28",
@@ -3557,7 +3629,7 @@
   },
   {
     "id": "L071-0",
-    "seq": 154,
+    "seq": 157,
     "page": 71,
     "kind": "letter",
     "book_date": "1924-12-27",
@@ -3580,7 +3652,7 @@
   },
   {
     "id": "L071-1",
-    "seq": 155,
+    "seq": 158,
     "page": 71,
     "kind": "letter",
     "book_date": "1924-12-29",
@@ -3603,7 +3675,7 @@
   },
   {
     "id": "L072-0",
-    "seq": 156,
+    "seq": 159,
     "page": 72,
     "kind": "letter",
     "book_date": "1924-12-31",
@@ -3626,7 +3698,7 @@
   },
   {
     "id": "L072-1",
-    "seq": 157,
+    "seq": 160,
     "page": 72,
     "kind": "letter",
     "book_date": "1924-12-31",
@@ -3649,7 +3721,7 @@
   },
   {
     "id": "L073-0",
-    "seq": 158,
+    "seq": 161,
     "page": 73,
     "kind": "letter",
     "book_date": "1925-01-01",
@@ -3672,7 +3744,7 @@
   },
   {
     "id": "L073-1",
-    "seq": 159,
+    "seq": 162,
     "page": 73,
     "kind": "letter",
     "book_date": "1925-01-05",
@@ -3695,7 +3767,7 @@
   },
   {
     "id": "L073-2",
-    "seq": 160,
+    "seq": 163,
     "page": 73,
     "kind": "letter",
     "book_date": "1925-01-07",
@@ -3718,7 +3790,7 @@
   },
   {
     "id": "L073-3",
-    "seq": 161,
+    "seq": 164,
     "page": 73,
     "kind": "letter",
     "book_date": "1925-01-10",
@@ -3741,7 +3813,7 @@
   },
   {
     "id": "L073-4",
-    "seq": 162,
+    "seq": 165,
     "page": 73,
     "kind": "letter",
     "book_date": "1925-01-12",
@@ -3764,7 +3836,7 @@
   },
   {
     "id": "L074-0",
-    "seq": 163,
+    "seq": 166,
     "page": 74,
     "kind": "letter",
     "book_date": "1925-01-15",
@@ -3787,7 +3859,7 @@
   },
   {
     "id": "L074-1",
-    "seq": 164,
+    "seq": 167,
     "page": 74,
     "kind": "letter",
     "book_date": "1925-01-17",
@@ -3810,7 +3882,7 @@
   },
   {
     "id": "L075-0",
-    "seq": 165,
+    "seq": 168,
     "page": 75,
     "kind": "letter",
     "book_date": "1925-01-22",
@@ -3833,7 +3905,7 @@
   },
   {
     "id": "L075-1",
-    "seq": 166,
+    "seq": 169,
     "page": 75,
     "kind": "letter",
     "book_date": "1925-01-22",
@@ -3856,7 +3928,7 @@
   },
   {
     "id": "L076-0",
-    "seq": 167,
+    "seq": 170,
     "page": 76,
     "kind": "letter",
     "book_date": "1925-01-27",
@@ -3879,7 +3951,7 @@
   },
   {
     "id": "L076-1",
-    "seq": 168,
+    "seq": 171,
     "page": 76,
     "kind": "letter",
     "book_date": "1925-02-03",
@@ -3902,7 +3974,7 @@
   },
   {
     "id": "L076-2",
-    "seq": 169,
+    "seq": 172,
     "page": 76,
     "kind": "letter",
     "book_date": "1925-02-12",
@@ -3925,7 +3997,7 @@
   },
   {
     "id": "L077-0",
-    "seq": 170,
+    "seq": 173,
     "page": 77,
     "kind": "letter",
     "book_date": "1925-02-16",
@@ -3948,7 +4020,7 @@
   },
   {
     "id": "L077-1",
-    "seq": 171,
+    "seq": 174,
     "page": 77,
     "kind": "letter",
     "book_date": "1925-02-17",
@@ -3971,7 +4043,7 @@
   },
   {
     "id": "L077-2",
-    "seq": 172,
+    "seq": 175,
     "page": 77,
     "kind": "letter",
     "book_date": "1925-02-18",
@@ -3994,7 +4066,7 @@
   },
   {
     "id": "L078-0",
-    "seq": 173,
+    "seq": 176,
     "page": 78,
     "kind": "letter",
     "book_date": "1925-02-18",
@@ -4017,7 +4089,7 @@
   },
   {
     "id": "L078-0x",
-    "seq": 174,
+    "seq": 177,
     "page": 78,
     "kind": "enclosure",
     "book_date": "1925-02-18",
@@ -4041,7 +4113,7 @@
   },
   {
     "id": "L079-0",
-    "seq": 175,
+    "seq": 178,
     "page": 79,
     "kind": "letter",
     "book_date": "1925-02-19",
@@ -4064,7 +4136,7 @@
   },
   {
     "id": "L079-1",
-    "seq": 176,
+    "seq": 179,
     "page": 79,
     "kind": "letter",
     "book_date": "1925-02-21",
@@ -4087,7 +4159,7 @@
   },
   {
     "id": "L080-0",
-    "seq": 177,
+    "seq": 180,
     "page": 80,
     "kind": "letter",
     "book_date": "1925-02-23",
@@ -4110,7 +4182,7 @@
   },
   {
     "id": "L080-1",
-    "seq": 178,
+    "seq": 181,
     "page": 80,
     "kind": "letter",
     "book_date": "1925-02-24",
@@ -4133,7 +4205,7 @@
   },
   {
     "id": "L080-2",
-    "seq": 179,
+    "seq": 182,
     "page": 80,
     "kind": "letter",
     "book_date": "1925-02-26",
@@ -4156,7 +4228,7 @@
   },
   {
     "id": "L080-3",
-    "seq": 180,
+    "seq": 183,
     "page": 80,
     "kind": "letter",
     "book_date": "1925-02-28",
@@ -4179,7 +4251,7 @@
   },
   {
     "id": "L081-0",
-    "seq": 181,
+    "seq": 184,
     "page": 81,
     "kind": "letter",
     "book_date": "1925-03-02",
@@ -4202,7 +4274,7 @@
   },
   {
     "id": "L081-1",
-    "seq": 182,
+    "seq": 185,
     "page": 81,
     "kind": "letter",
     "book_date": "1925-03-03",
@@ -4225,7 +4297,7 @@
   },
   {
     "id": "L082-0",
-    "seq": 183,
+    "seq": 186,
     "page": 82,
     "kind": "letter",
     "book_date": "1925-03-07",
@@ -4248,7 +4320,7 @@
   },
   {
     "id": "L082-1",
-    "seq": 184,
+    "seq": 187,
     "page": 82,
     "kind": "letter",
     "book_date": "1925-03-11",
@@ -4271,7 +4343,7 @@
   },
   {
     "id": "L082-2",
-    "seq": 185,
+    "seq": 188,
     "page": 82,
     "kind": "letter",
     "book_date": "1925-03-11",
@@ -4294,7 +4366,7 @@
   },
   {
     "id": "L083-0",
-    "seq": 186,
+    "seq": 189,
     "page": 83,
     "kind": "letter",
     "book_date": "1925-03-12",
@@ -4317,7 +4389,7 @@
   },
   {
     "id": "L083-1",
-    "seq": 187,
+    "seq": 190,
     "page": 83,
     "kind": "letter",
     "book_date": "1925-03-14",
@@ -4340,7 +4412,7 @@
   },
   {
     "id": "L084-0",
-    "seq": 188,
+    "seq": 191,
     "page": 84,
     "kind": "letter",
     "book_date": "1925-03-16",
@@ -4363,7 +4435,7 @@
   },
   {
     "id": "L084-1",
-    "seq": 189,
+    "seq": 192,
     "page": 84,
     "kind": "letter",
     "book_date": "1925-03-17",
@@ -4386,7 +4458,7 @@
   },
   {
     "id": "L084-2",
-    "seq": 190,
+    "seq": 193,
     "page": 84,
     "kind": "letter",
     "book_date": "1925-03-18",
@@ -4409,7 +4481,7 @@
   },
   {
     "id": "L085-0",
-    "seq": 191,
+    "seq": 194,
     "page": 85,
     "kind": "letter",
     "book_date": "1925-03-23",
@@ -4432,7 +4504,7 @@
   },
   {
     "id": "L085-1",
-    "seq": 192,
+    "seq": 195,
     "page": 85,
     "kind": "letter",
     "book_date": "1925-03-24",
@@ -4455,7 +4527,7 @@
   },
   {
     "id": "L085-2",
-    "seq": 193,
+    "seq": 196,
     "page": 85,
     "kind": "letter",
     "book_date": "1925-03-27",
@@ -4478,7 +4550,7 @@
   },
   {
     "id": "L086-0",
-    "seq": 194,
+    "seq": 197,
     "page": 86,
     "kind": "letter",
     "book_date": "1925-04-01",
@@ -4501,7 +4573,7 @@
   },
   {
     "id": "L087-0",
-    "seq": 195,
+    "seq": 198,
     "page": 87,
     "kind": "letter",
     "book_date": "1925-04-01",
@@ -4524,7 +4596,7 @@
   },
   {
     "id": "L087-1",
-    "seq": 196,
+    "seq": 199,
     "page": 87,
     "kind": "letter",
     "book_date": "1925-04-04",
@@ -4547,7 +4619,7 @@
   },
   {
     "id": "L087-2",
-    "seq": 197,
+    "seq": 200,
     "page": 87,
     "kind": "letter",
     "book_date": "1925-04-07",
@@ -4570,7 +4642,7 @@
   },
   {
     "id": "L087-3",
-    "seq": 198,
+    "seq": 201,
     "page": 87,
     "kind": "letter",
     "book_date": "1925-04-09",
@@ -4593,7 +4665,7 @@
   },
   {
     "id": "L088-0",
-    "seq": 199,
+    "seq": 202,
     "page": 88,
     "kind": "letter",
     "book_date": "1925-04-14",
@@ -4616,7 +4688,7 @@
   },
   {
     "id": "L088-1",
-    "seq": 200,
+    "seq": 203,
     "page": 88,
     "kind": "letter",
     "book_date": "1925-04-15",
@@ -4639,7 +4711,7 @@
   },
   {
     "id": "L088-2",
-    "seq": 201,
+    "seq": 204,
     "page": 88,
     "kind": "letter",
     "book_date": "1925-04-17",
@@ -4662,7 +4734,7 @@
   },
   {
     "id": "L088-3",
-    "seq": 202,
+    "seq": 205,
     "page": 88,
     "kind": "letter",
     "book_date": "1925-04-18",
@@ -4685,7 +4757,7 @@
   },
   {
     "id": "L088-4",
-    "seq": 203,
+    "seq": 206,
     "page": 88,
     "kind": "letter",
     "book_date": "1925-04-22",
@@ -4708,7 +4780,7 @@
   },
   {
     "id": "L089-0",
-    "seq": 204,
+    "seq": 207,
     "page": 89,
     "kind": "letter",
     "book_date": "1925-04-25",
@@ -4731,7 +4803,7 @@
   },
   {
     "id": "L089-1",
-    "seq": 205,
+    "seq": 208,
     "page": 89,
     "kind": "letter",
     "book_date": "1925-04-27",
@@ -4754,7 +4826,7 @@
   },
   {
     "id": "L090-0",
-    "seq": 206,
+    "seq": 209,
     "page": 90,
     "kind": "letter",
     "book_date": "1925-04-28",
@@ -4777,7 +4849,7 @@
   },
   {
     "id": "L090-1",
-    "seq": 207,
+    "seq": 210,
     "page": 90,
     "kind": "letter",
     "book_date": "1925-05-02",
@@ -4800,7 +4872,7 @@
   },
   {
     "id": "L091-0",
-    "seq": 208,
+    "seq": 211,
     "page": 91,
     "kind": "letter",
     "book_date": "1925-05-04",
@@ -4823,7 +4895,7 @@
   },
   {
     "id": "L091-0x",
-    "seq": 209,
+    "seq": 212,
     "page": 91,
     "kind": "letter",
     "book_date": "1925-05-08",
@@ -4847,7 +4919,7 @@
   },
   {
     "id": "L092-0",
-    "seq": 210,
+    "seq": 213,
     "page": 92,
     "kind": "letter",
     "book_date": "1925-05-09",
@@ -4870,7 +4942,7 @@
   },
   {
     "id": "L093-0",
-    "seq": 211,
+    "seq": 214,
     "page": 93,
     "kind": "letter",
     "book_date": "1925-05-12",
@@ -4893,7 +4965,7 @@
   },
   {
     "id": "L093-1",
-    "seq": 212,
+    "seq": 215,
     "page": 93,
     "kind": "letter",
     "book_date": "1925-05-10",
@@ -4916,7 +4988,7 @@
   },
   {
     "id": "L093-1x",
-    "seq": 213,
+    "seq": 216,
     "page": 93,
     "kind": "letter",
     "book_date": "1925-05-19",
@@ -4940,7 +5012,7 @@
   },
   {
     "id": "L093-1y",
-    "seq": 214,
+    "seq": 217,
     "page": 93,
     "kind": "letter",
     "book_date": "1925-05-25",
@@ -4964,7 +5036,7 @@
   },
   {
     "id": "L094-0",
-    "seq": 215,
+    "seq": 218,
     "page": 94,
     "kind": "letter",
     "book_date": "1925-05-28",
@@ -4987,7 +5059,7 @@
   },
   {
     "id": "L094-1",
-    "seq": 216,
+    "seq": 219,
     "page": 94,
     "kind": "letter",
     "book_date": "1925-05-30",
@@ -5010,7 +5082,7 @@
   },
   {
     "id": "L095-0",
-    "seq": 217,
+    "seq": 220,
     "page": 95,
     "kind": "letter",
     "book_date": "1925-05-30",
@@ -5033,7 +5105,7 @@
   },
   {
     "id": "L095-0x",
-    "seq": 218,
+    "seq": 221,
     "page": 95,
     "kind": "letter",
     "book_date": "1925-06-03",
@@ -5057,7 +5129,7 @@
   },
   {
     "id": "L096-0",
-    "seq": 219,
+    "seq": 222,
     "page": 96,
     "kind": "letter",
     "book_date": "1925-06-05",
@@ -5080,7 +5152,7 @@
   },
   {
     "id": "L096-1",
-    "seq": 220,
+    "seq": 223,
     "page": 96,
     "kind": "letter",
     "book_date": "1925-06-11",
@@ -5103,7 +5175,7 @@
   },
   {
     "id": "L097-0",
-    "seq": 221,
+    "seq": 224,
     "page": 97,
     "kind": "letter",
     "book_date": "1925-06-12",
@@ -5126,7 +5198,7 @@
   },
   {
     "id": "L097-1",
-    "seq": 222,
+    "seq": 225,
     "page": 97,
     "kind": "letter",
     "book_date": "1925-06-15",
@@ -5149,7 +5221,7 @@
   },
   {
     "id": "L098-0",
-    "seq": 223,
+    "seq": 226,
     "page": 98,
     "kind": "letter",
     "book_date": "1925-06-17",
@@ -5172,7 +5244,7 @@
   },
   {
     "id": "L098-1",
-    "seq": 224,
+    "seq": 227,
     "page": 98,
     "kind": "enclosure",
     "book_date": "1925-06-16",
@@ -5195,7 +5267,7 @@
   },
   {
     "id": "L098-2",
-    "seq": 225,
+    "seq": 228,
     "page": 98,
     "kind": "letter",
     "book_date": "1925-06-20",
@@ -5218,7 +5290,7 @@
   },
   {
     "id": "L099-0",
-    "seq": 226,
+    "seq": 229,
     "page": 99,
     "kind": "letter",
     "book_date": "1925-06-22",
@@ -5241,7 +5313,7 @@
   },
   {
     "id": "L099-0x",
-    "seq": 227,
+    "seq": 230,
     "page": 99,
     "kind": "enclosure",
     "book_date": "1925-06-21",
@@ -5265,7 +5337,7 @@
   },
   {
     "id": "L100-0",
-    "seq": 228,
+    "seq": 231,
     "page": 100,
     "kind": "letter",
     "book_date": "1925-07-07",
@@ -5288,7 +5360,7 @@
   },
   {
     "id": "L100-1",
-    "seq": 229,
+    "seq": 232,
     "page": 100,
     "kind": "letter",
     "book_date": "1925-07-08",
@@ -5311,7 +5383,7 @@
   },
   {
     "id": "L101-0",
-    "seq": 230,
+    "seq": 233,
     "page": 101,
     "kind": "letter",
     "book_date": "1925-07-09",
@@ -5334,7 +5406,7 @@
   },
   {
     "id": "L101-0x",
-    "seq": 231,
+    "seq": 234,
     "page": 101,
     "kind": "letter",
     "book_date": "1925-07-10",
@@ -5358,7 +5430,7 @@
   },
   {
     "id": "L102-0",
-    "seq": 232,
+    "seq": 235,
     "page": 102,
     "kind": "letter",
     "book_date": "1925-07-07",
@@ -5381,7 +5453,7 @@
   },
   {
     "id": "L104-0",
-    "seq": 233,
+    "seq": 236,
     "page": 104,
     "kind": "letter",
     "book_date": "1925-07-08",
@@ -5404,7 +5476,7 @@
   },
   {
     "id": "L104-1",
-    "seq": 234,
+    "seq": 237,
     "page": 104,
     "kind": "letter",
     "book_date": "1925-07-09",
@@ -5427,7 +5499,7 @@
   },
   {
     "id": "L105-0",
-    "seq": 235,
+    "seq": 238,
     "page": 105,
     "kind": "letter",
     "book_date": "1925-07-13",
@@ -5450,7 +5522,7 @@
   },
   {
     "id": "L105-1",
-    "seq": 236,
+    "seq": 239,
     "page": 105,
     "kind": "letter",
     "book_date": "1925-07-15",
@@ -5473,7 +5545,7 @@
   },
   {
     "id": "L106-0",
-    "seq": 237,
+    "seq": 240,
     "page": 106,
     "kind": "letter",
     "book_date": "1925-07-18",
@@ -5496,7 +5568,7 @@
   },
   {
     "id": "L106-1",
-    "seq": 238,
+    "seq": 241,
     "page": 106,
     "kind": "letter",
     "book_date": "1925-07-20",
@@ -5519,7 +5591,7 @@
   },
   {
     "id": "L107-0",
-    "seq": 239,
+    "seq": 242,
     "page": 107,
     "kind": "letter",
     "book_date": "1925-07-20",
@@ -5542,7 +5614,7 @@
   },
   {
     "id": "L107-1",
-    "seq": 240,
+    "seq": 243,
     "page": 107,
     "kind": "letter",
     "book_date": "1925-07-24",
@@ -5565,7 +5637,7 @@
   },
   {
     "id": "L107-1x",
-    "seq": 241,
+    "seq": 244,
     "page": 107,
     "kind": "letter",
     "book_date": "1925-07-27",
@@ -5589,7 +5661,7 @@
   },
   {
     "id": "L108-0",
-    "seq": 242,
+    "seq": 245,
     "page": 108,
     "kind": "letter",
     "book_date": "1925-07-31",
@@ -5612,7 +5684,7 @@
   },
   {
     "id": "L108-1",
-    "seq": 243,
+    "seq": 246,
     "page": 108,
     "kind": "letter",
     "book_date": "1925-08-04",
@@ -5635,7 +5707,7 @@
   },
   {
     "id": "L109-0",
-    "seq": 244,
+    "seq": 247,
     "page": 109,
     "kind": "letter",
     "book_date": "1925-08-14",
@@ -5658,7 +5730,7 @@
   },
   {
     "id": "L109-1",
-    "seq": 245,
+    "seq": 248,
     "page": 109,
     "kind": "letter",
     "book_date": "1925-08-16",
@@ -5681,7 +5753,7 @@
   },
   {
     "id": "L110-0",
-    "seq": 246,
+    "seq": 249,
     "page": 110,
     "kind": "letter",
     "book_date": "1925-08-05",
@@ -5704,7 +5776,7 @@
   },
   {
     "id": "L110-1",
-    "seq": 247,
+    "seq": 250,
     "page": 110,
     "kind": "letter",
     "book_date": "1925-08-06",
@@ -5727,7 +5799,7 @@
   },
   {
     "id": "L111-0",
-    "seq": 248,
+    "seq": 251,
     "page": 111,
     "kind": "letter",
     "book_date": "1925-08-08",
@@ -5750,7 +5822,7 @@
   },
   {
     "id": "L111-1",
-    "seq": 249,
+    "seq": 252,
     "page": 111,
     "kind": "letter",
     "book_date": "1925-08-09",
@@ -5773,7 +5845,7 @@
   },
   {
     "id": "L112-0",
-    "seq": 250,
+    "seq": 253,
     "page": 112,
     "kind": "letter",
     "book_date": "1925-08-09",
@@ -5796,7 +5868,7 @@
   },
   {
     "id": "L112-1",
-    "seq": 251,
+    "seq": 254,
     "page": 112,
     "kind": "letter",
     "book_date": "1925-08-10",
@@ -5819,7 +5891,7 @@
   },
   {
     "id": "L113-0",
-    "seq": 252,
+    "seq": 255,
     "page": 113,
     "kind": "letter",
     "book_date": "1925-08-12",
@@ -5842,7 +5914,7 @@
   },
   {
     "id": "L113-1",
-    "seq": 253,
+    "seq": 256,
     "page": 113,
     "kind": "letter",
     "book_date": "1925-08-13",
@@ -5865,7 +5937,7 @@
   },
   {
     "id": "L114-0",
-    "seq": 254,
+    "seq": 257,
     "page": 114,
     "kind": "letter",
     "book_date": "1925-08-15",
@@ -5888,7 +5960,7 @@
   },
   {
     "id": "L114-1",
-    "seq": 255,
+    "seq": 258,
     "page": 114,
     "kind": "letter",
     "book_date": "1925-08-16",
@@ -5911,7 +5983,7 @@
   },
   {
     "id": "L114-2",
-    "seq": 256,
+    "seq": 259,
     "page": 114,
     "kind": "letter",
     "book_date": "1925-08-18",
@@ -5934,7 +6006,7 @@
   },
   {
     "id": "L114-2x",
-    "seq": 257,
+    "seq": 260,
     "page": 114,
     "kind": "letter",
     "book_date": "1925-08-20",
@@ -5958,7 +6030,7 @@
   },
   {
     "id": "L115-0",
-    "seq": 258,
+    "seq": 261,
     "page": 115,
     "kind": "letter",
     "book_date": "1925-08-21",
@@ -5981,7 +6053,7 @@
   },
   {
     "id": "L116-0",
-    "seq": 259,
+    "seq": 262,
     "page": 116,
     "kind": "letter",
     "book_date": "1925-08-21",
@@ -6004,7 +6076,7 @@
   },
   {
     "id": "L116-1",
-    "seq": 260,
+    "seq": 263,
     "page": 116,
     "kind": "letter",
     "book_date": "1925-08-27",
@@ -6027,7 +6099,7 @@
   },
   {
     "id": "L116-2",
-    "seq": 261,
+    "seq": 264,
     "page": 116,
     "kind": "enclosure",
     "book_date": "1925-08-28",
@@ -6050,7 +6122,7 @@
   },
   {
     "id": "L117-0",
-    "seq": 262,
+    "seq": 265,
     "page": 117,
     "kind": "letter",
     "book_date": "1925-08-30",
@@ -6073,7 +6145,7 @@
   },
   {
     "id": "L117-1",
-    "seq": 263,
+    "seq": 266,
     "page": 117,
     "kind": "letter",
     "book_date": "1925-08-30",
@@ -6096,7 +6168,7 @@
   },
   {
     "id": "L118-0",
-    "seq": 264,
+    "seq": 267,
     "page": 118,
     "kind": "letter",
     "book_date": "1925-09-01",
@@ -6119,7 +6191,7 @@
   },
   {
     "id": "L119-0",
-    "seq": 265,
+    "seq": 268,
     "page": 119,
     "kind": "letter",
     "book_date": "1925-09-03",
@@ -6142,7 +6214,7 @@
   },
   {
     "id": "L119-1",
-    "seq": 266,
+    "seq": 269,
     "page": 119,
     "kind": "letter",
     "book_date": "1925-09-04",
@@ -6165,7 +6237,7 @@
   },
   {
     "id": "L121-0",
-    "seq": 267,
+    "seq": 270,
     "page": 121,
     "kind": "letter",
     "book_date": "1925-09-05",
@@ -6188,7 +6260,7 @@
   },
   {
     "id": "L121-1",
-    "seq": 268,
+    "seq": 271,
     "page": 121,
     "kind": "letter",
     "book_date": "1925-09-05",
@@ -6211,7 +6283,7 @@
   },
   {
     "id": "L121-2",
-    "seq": 269,
+    "seq": 272,
     "page": 121,
     "kind": "letter",
     "book_date": "1925-09-06",
@@ -6234,7 +6306,7 @@
   },
   {
     "id": "L122-0",
-    "seq": 270,
+    "seq": 273,
     "page": 122,
     "kind": "letter",
     "book_date": "1925-09-07",
@@ -6257,7 +6329,7 @@
   },
   {
     "id": "L123-0",
-    "seq": 271,
+    "seq": 274,
     "page": 123,
     "kind": "letter",
     "book_date": "1925-09-07",
@@ -6280,7 +6352,7 @@
   },
   {
     "id": "L123-1",
-    "seq": 272,
+    "seq": 275,
     "page": 123,
     "kind": "letter",
     "book_date": "1925-09-07",
@@ -6303,7 +6375,7 @@
   },
   {
     "id": "L123-2",
-    "seq": 273,
+    "seq": 276,
     "page": 123,
     "kind": "telegram",
     "book_date": "1925-09-08",
@@ -6326,7 +6398,7 @@
   },
   {
     "id": "L123-2x",
-    "seq": 274,
+    "seq": 277,
     "page": 123,
     "kind": "letter",
     "book_date": "1925-09-08",
@@ -6350,7 +6422,7 @@
   },
   {
     "id": "L123-2y",
-    "seq": 275,
+    "seq": 278,
     "page": 123,
     "kind": "letter",
     "book_date": "1925-09-08",
@@ -6374,7 +6446,7 @@
   },
   {
     "id": "L125-0",
-    "seq": 276,
+    "seq": 279,
     "page": 125,
     "kind": "letter",
     "book_date": "1925-09-09",
@@ -6397,7 +6469,7 @@
   },
   {
     "id": "L125-1",
-    "seq": 277,
+    "seq": 280,
     "page": 125,
     "kind": "letter",
     "book_date": "1925-09-10",
@@ -6420,7 +6492,7 @@
   },
   {
     "id": "L126-0",
-    "seq": 278,
+    "seq": 281,
     "page": 126,
     "kind": "telegram",
     "book_date": "1925-09-10",
@@ -6443,7 +6515,7 @@
   },
   {
     "id": "L126-1",
-    "seq": 279,
+    "seq": 282,
     "page": 126,
     "kind": "letter",
     "book_date": "1925-09-13",
@@ -6466,7 +6538,7 @@
   },
   {
     "id": "L126-2",
-    "seq": 280,
+    "seq": 283,
     "page": 126,
     "kind": "letter",
     "book_date": "1925-09-15",
@@ -6489,7 +6561,7 @@
   },
   {
     "id": "L126-2x",
-    "seq": 281,
+    "seq": 284,
     "page": 126,
     "kind": "letter",
     "book_date": "1925-09-15",
@@ -6513,7 +6585,7 @@
   },
   {
     "id": "L126-2y",
-    "seq": 282,
+    "seq": 285,
     "page": 128,
     "kind": "letter",
     "book_date": "1925-09-18",
@@ -6537,7 +6609,7 @@
   },
   {
     "id": "L128-0",
-    "seq": 283,
+    "seq": 286,
     "page": 128,
     "kind": "letter",
     "book_date": "1925-09-19",
@@ -6560,7 +6632,7 @@
   },
   {
     "id": "L129-0",
-    "seq": 284,
+    "seq": 287,
     "page": 129,
     "kind": "letter",
     "book_date": "1925-09-20",
@@ -6583,7 +6655,7 @@
   },
   {
     "id": "L129-0x",
-    "seq": 285,
+    "seq": 288,
     "page": 129,
     "kind": "letter",
     "book_date": "1925-09-21",
@@ -6607,7 +6679,7 @@
   },
   {
     "id": "L130-0",
-    "seq": 286,
+    "seq": 289,
     "page": 130,
     "kind": "letter",
     "book_date": "1925-09-21",
@@ -6630,7 +6702,7 @@
   },
   {
     "id": "L130-1",
-    "seq": 287,
+    "seq": 290,
     "page": 130,
     "kind": "letter",
     "book_date": "1925-09-22",
@@ -6653,7 +6725,7 @@
   },
   {
     "id": "L130-2",
-    "seq": 288,
+    "seq": 291,
     "page": 130,
     "kind": "letter",
     "book_date": "1925-09-23",
@@ -6676,7 +6748,7 @@
   },
   {
     "id": "L130-3",
-    "seq": 289,
+    "seq": 292,
     "page": 130,
     "kind": "letter",
     "book_date": "1925-09-24",
@@ -6699,7 +6771,7 @@
   },
   {
     "id": "L131-0",
-    "seq": 290,
+    "seq": 293,
     "page": 131,
     "kind": "letter",
     "book_date": "1925-09-25",
@@ -6722,7 +6794,7 @@
   },
   {
     "id": "L131-1",
-    "seq": 291,
+    "seq": 294,
     "page": 131,
     "kind": "letter",
     "book_date": "1925-09-25",
@@ -6745,7 +6817,7 @@
   },
   {
     "id": "L132-0",
-    "seq": 292,
+    "seq": 295,
     "page": 132,
     "kind": "letter",
     "book_date": "1925-09-26",
@@ -6768,7 +6840,7 @@
   },
   {
     "id": "L132-0x",
-    "seq": 293,
+    "seq": 296,
     "page": 132,
     "kind": "letter",
     "book_date": "1925-10-12",
@@ -6792,7 +6864,7 @@
   },
   {
     "id": "L134-0",
-    "seq": 294,
+    "seq": 297,
     "page": 134,
     "kind": "letter",
     "book_date": "1925-10-15",
@@ -6815,7 +6887,7 @@
   },
   {
     "id": "L134-1",
-    "seq": 295,
+    "seq": 298,
     "page": 134,
     "kind": "letter",
     "book_date": "1925-10-15",
@@ -6838,7 +6910,7 @@
   },
   {
     "id": "L134-1x",
-    "seq": 296,
+    "seq": 299,
     "page": 134,
     "kind": "letter",
     "book_date": "1925-10-15",
@@ -6862,7 +6934,7 @@
   },
   {
     "id": "L134-2",
-    "seq": 297,
+    "seq": 300,
     "page": 134,
     "kind": "telegram",
     "book_date": "1925-10-16",
@@ -6885,7 +6957,7 @@
   },
   {
     "id": "L134-3",
-    "seq": 298,
+    "seq": 301,
     "page": 134,
     "kind": "letter",
     "book_date": "1925-10-18",
@@ -6908,7 +6980,7 @@
   },
   {
     "id": "L134-4",
-    "seq": 299,
+    "seq": 302,
     "page": 134,
     "kind": "letter",
     "book_date": "1925-10-22",
@@ -6931,7 +7003,7 @@
   },
   {
     "id": "L134-5",
-    "seq": 300,
+    "seq": 303,
     "page": 134,
     "kind": "letter",
     "book_date": "1925-10-23",
@@ -6954,7 +7026,7 @@
   },
   {
     "id": "L135-0",
-    "seq": 301,
+    "seq": 304,
     "page": 135,
     "kind": "letter",
     "book_date": "1925-10-23",
@@ -6977,7 +7049,7 @@
   },
   {
     "id": "L135-1",
-    "seq": 302,
+    "seq": 305,
     "page": 135,
     "kind": "letter",
     "book_date": "1925-10-24",
@@ -7000,7 +7072,7 @@
   },
   {
     "id": "L135-1x",
-    "seq": 303,
+    "seq": 306,
     "page": 135,
     "kind": "letter",
     "book_date": "1925-10-25",
@@ -7024,7 +7096,7 @@
   },
   {
     "id": "L135-1y",
-    "seq": 304,
+    "seq": 307,
     "page": 135,
     "kind": "letter",
     "book_date": "1925-10-26",
@@ -7048,7 +7120,7 @@
   },
   {
     "id": "L136-0",
-    "seq": 305,
+    "seq": 308,
     "page": 136,
     "kind": "letter",
     "book_date": "1925-10-30",
@@ -7071,7 +7143,7 @@
   },
   {
     "id": "L136-1",
-    "seq": 306,
+    "seq": 309,
     "page": 136,
     "kind": "confidential",
     "book_date": "1925-10-31",
@@ -7094,7 +7166,7 @@
   },
   {
     "id": "L136-1x",
-    "seq": 307,
+    "seq": 310,
     "page": 136,
     "kind": "letter",
     "book_date": "1925-11-01",
@@ -7118,7 +7190,7 @@
   },
   {
     "id": "L139-0",
-    "seq": 308,
+    "seq": 311,
     "page": 139,
     "kind": "letter",
     "book_date": "1925-11-01",
@@ -7141,7 +7213,7 @@
   },
   {
     "id": "L139-1",
-    "seq": 309,
+    "seq": 312,
     "page": 139,
     "kind": "letter",
     "book_date": "1925-11-02",
@@ -7164,7 +7236,7 @@
   },
   {
     "id": "L139-1x",
-    "seq": 310,
+    "seq": 313,
     "page": 139,
     "kind": "letter",
     "book_date": "1925-11-03",
@@ -7188,7 +7260,7 @@
   },
   {
     "id": "L140-0",
-    "seq": 311,
+    "seq": 314,
     "page": 140,
     "kind": "letter",
     "book_date": "1925-11-06",
@@ -7211,7 +7283,7 @@
   },
   {
     "id": "L141-0",
-    "seq": 312,
+    "seq": 315,
     "page": 141,
     "kind": "letter",
     "book_date": "1925-11-10",
@@ -7234,7 +7306,7 @@
   },
   {
     "id": "L142-0",
-    "seq": 313,
+    "seq": 316,
     "page": 142,
     "kind": "letter",
     "book_date": "1925-11-15",
@@ -7257,7 +7329,7 @@
   },
   {
     "id": "L143-0",
-    "seq": 314,
+    "seq": 317,
     "page": 143,
     "kind": "letter",
     "book_date": "1925-11-17",
@@ -7280,7 +7352,7 @@
   },
   {
     "id": "L143-1",
-    "seq": 315,
+    "seq": 318,
     "page": 143,
     "kind": "letter",
     "book_date": "1925-11-19",
@@ -7303,7 +7375,7 @@
   },
   {
     "id": "L143-2",
-    "seq": 316,
+    "seq": 319,
     "page": 143,
     "kind": "letter",
     "book_date": "1925-11-19",
@@ -7326,7 +7398,7 @@
   },
   {
     "id": "L144-0",
-    "seq": 317,
+    "seq": 320,
     "page": 144,
     "kind": "letter",
     "book_date": "1925-11-20",
@@ -7349,7 +7421,7 @@
   },
   {
     "id": "L144-1",
-    "seq": 318,
+    "seq": 321,
     "page": 144,
     "kind": "letter",
     "book_date": "1925-11-20",
@@ -7372,7 +7444,7 @@
   },
   {
     "id": "L144-2",
-    "seq": 319,
+    "seq": 322,
     "page": 144,
     "kind": "letter",
     "book_date": "1925-11-21",
@@ -7395,7 +7467,7 @@
   },
   {
     "id": "L145-0",
-    "seq": 320,
+    "seq": 323,
     "page": 145,
     "kind": "letter",
     "book_date": "1925-11-22",
@@ -7418,7 +7490,7 @@
   },
   {
     "id": "L146-0",
-    "seq": 321,
+    "seq": 324,
     "page": 146,
     "kind": "letter",
     "book_date": "1925-11-21",
@@ -7441,7 +7513,7 @@
   },
   {
     "id": "L146-1",
-    "seq": 322,
+    "seq": 325,
     "page": 146,
     "kind": "letter",
     "book_date": "1925-11-25",
@@ -7464,7 +7536,7 @@
   },
   {
     "id": "L146-2",
-    "seq": 323,
+    "seq": 326,
     "page": 146,
     "kind": "letter",
     "book_date": "1925-11-28",
@@ -7487,7 +7559,7 @@
   },
   {
     "id": "L147-0",
-    "seq": 324,
+    "seq": 327,
     "page": 147,
     "kind": "letter",
     "book_date": "1925-11-28",
@@ -7510,7 +7582,7 @@
   },
   {
     "id": "L148-0",
-    "seq": 325,
+    "seq": 328,
     "page": 148,
     "kind": "letter",
     "book_date": "1925-11-29",
@@ -7533,7 +7605,7 @@
   },
   {
     "id": "L148-1",
-    "seq": 326,
+    "seq": 329,
     "page": 148,
     "kind": "letter",
     "book_date": "1925-11-29",
@@ -7556,7 +7628,7 @@
   },
   {
     "id": "L148-1x",
-    "seq": 327,
+    "seq": 330,
     "page": 148,
     "kind": "letter",
     "book_date": "1925-12-01",
@@ -7580,7 +7652,7 @@
   },
   {
     "id": "L148-1y",
-    "seq": 328,
+    "seq": 331,
     "page": 148,
     "kind": "letter",
     "book_date": "1925-12-02",
@@ -7604,7 +7676,7 @@
   },
   {
     "id": "L149-0",
-    "seq": 329,
+    "seq": 332,
     "page": 149,
     "kind": "letter",
     "book_date": "1925-12-03",
@@ -7627,7 +7699,7 @@
   },
   {
     "id": "L150-0",
-    "seq": 330,
+    "seq": 333,
     "page": 150,
     "kind": "letter",
     "book_date": "1925-12-03",
@@ -7650,7 +7722,7 @@
   },
   {
     "id": "L150-1",
-    "seq": 331,
+    "seq": 334,
     "page": 150,
     "kind": "letter",
     "book_date": "1925-12-04",
@@ -7673,7 +7745,7 @@
   },
   {
     "id": "L150-2",
-    "seq": 332,
+    "seq": 335,
     "page": 150,
     "kind": "letter",
     "book_date": "1925-12-05",
@@ -7696,7 +7768,7 @@
   },
   {
     "id": "L151-0",
-    "seq": 333,
+    "seq": 336,
     "page": 151,
     "kind": "letter",
     "book_date": "1925-12-06",
@@ -7719,7 +7791,7 @@
   },
   {
     "id": "L151-0x",
-    "seq": 334,
+    "seq": 337,
     "page": 151,
     "kind": "letter",
     "book_date": "1925-12-06",
@@ -7743,7 +7815,7 @@
   },
   {
     "id": "L152-0",
-    "seq": 335,
+    "seq": 338,
     "page": 152,
     "kind": "letter",
     "book_date": "1925-12-07",
@@ -7766,7 +7838,7 @@
   },
   {
     "id": "L152-1",
-    "seq": 336,
+    "seq": 339,
     "page": 152,
     "kind": "letter",
     "book_date": "1925-12-09",
@@ -7789,7 +7861,7 @@
   },
   {
     "id": "L153-0",
-    "seq": 337,
+    "seq": 340,
     "page": 153,
     "kind": "letter",
     "book_date": "1925-12-08",
@@ -7812,7 +7884,7 @@
   },
   {
     "id": "L153-1",
-    "seq": 338,
+    "seq": 341,
     "page": 153,
     "kind": "letter",
     "book_date": "1925-12-10",
@@ -7835,7 +7907,7 @@
   },
   {
     "id": "L154-0",
-    "seq": 339,
+    "seq": 342,
     "page": 154,
     "kind": "letter",
     "book_date": "1925-12-10",
@@ -7858,7 +7930,7 @@
   },
   {
     "id": "L154-1",
-    "seq": 340,
+    "seq": 343,
     "page": 154,
     "kind": "confidential",
     "book_date": "1925-12-10",
@@ -7881,7 +7953,7 @@
   },
   {
     "id": "L154-1x",
-    "seq": 341,
+    "seq": 344,
     "page": 154,
     "kind": "letter",
     "book_date": "1925-12-12",
@@ -7905,7 +7977,7 @@
   },
   {
     "id": "L155-0",
-    "seq": 342,
+    "seq": 345,
     "page": 155,
     "kind": "letter",
     "book_date": "1925-12-13",
@@ -7928,7 +8000,7 @@
   },
   {
     "id": "L155-0x",
-    "seq": 343,
+    "seq": 346,
     "page": 155,
     "kind": "letter",
     "book_date": "1925-12-13",
@@ -7952,7 +8024,7 @@
   },
   {
     "id": "L156-0",
-    "seq": 344,
+    "seq": 347,
     "page": 156,
     "kind": "letter",
     "book_date": "1925-12-16",
@@ -7975,7 +8047,7 @@
   },
   {
     "id": "L156-1",
-    "seq": 345,
+    "seq": 348,
     "page": 156,
     "kind": "letter",
     "book_date": "1925-12-18",
@@ -7998,7 +8070,7 @@
   },
   {
     "id": "L156-1x",
-    "seq": 346,
+    "seq": 349,
     "page": 156,
     "kind": "letter",
     "book_date": "1925-12-20",
@@ -8022,7 +8094,7 @@
   },
   {
     "id": "L157-0",
-    "seq": 347,
+    "seq": 350,
     "page": 157,
     "kind": "letter",
     "book_date": "1925-12-18",
@@ -8045,7 +8117,7 @@
   },
   {
     "id": "L157-1",
-    "seq": 348,
+    "seq": 351,
     "page": 157,
     "kind": "letter",
     "book_date": "1925-12-19",
@@ -8068,7 +8140,7 @@
   },
   {
     "id": "L157-1x",
-    "seq": 349,
+    "seq": 352,
     "page": 157,
     "kind": "letter",
     "book_date": "1925-12-29",
@@ -8092,7 +8164,7 @@
   },
   {
     "id": "L157-1y",
-    "seq": 350,
+    "seq": 353,
     "page": 157,
     "kind": "letter",
     "book_date": "1925-12-31",
@@ -8116,7 +8188,7 @@
   },
   {
     "id": "L157-1z",
-    "seq": 351,
+    "seq": 354,
     "page": 157,
     "kind": "letter",
     "book_date": "1925-12-31",
@@ -8140,7 +8212,7 @@
   },
   {
     "id": "L158-0",
-    "seq": 352,
+    "seq": 355,
     "page": 158,
     "kind": "letter",
     "book_date": "1925-12-31",
@@ -8163,7 +8235,7 @@
   },
   {
     "id": "L158-1",
-    "seq": 353,
+    "seq": 356,
     "page": 158,
     "kind": "letter",
     "book_date": "1926-01-01",
@@ -8186,7 +8258,7 @@
   },
   {
     "id": "L158-2",
-    "seq": 354,
+    "seq": 357,
     "page": 158,
     "kind": "letter",
     "book_date": "1926-01-02",
@@ -8209,7 +8281,7 @@
   },
   {
     "id": "L159-0",
-    "seq": 355,
+    "seq": 358,
     "page": 159,
     "kind": "letter",
     "book_date": "1926-01-01",
@@ -8232,7 +8304,7 @@
   },
   {
     "id": "L159-1",
-    "seq": 356,
+    "seq": 359,
     "page": 159,
     "kind": "letter",
     "book_date": "1926-01-07",
@@ -8255,7 +8327,7 @@
   },
   {
     "id": "L160-0",
-    "seq": 357,
+    "seq": 360,
     "page": 160,
     "kind": "letter",
     "book_date": "1926-01-08",
@@ -8278,7 +8350,7 @@
   },
   {
     "id": "L160-1",
-    "seq": 358,
+    "seq": 361,
     "page": 160,
     "kind": "letter",
     "book_date": "1926-01-08",
@@ -8301,7 +8373,7 @@
   },
   {
     "id": "L161-0",
-    "seq": 359,
+    "seq": 362,
     "page": 161,
     "kind": "letter",
     "book_date": "1926-01-09",
@@ -8324,7 +8396,7 @@
   },
   {
     "id": "L161-1",
-    "seq": 360,
+    "seq": 363,
     "page": 161,
     "kind": "letter",
     "book_date": "1926-01-11",
@@ -8347,7 +8419,7 @@
   },
   {
     "id": "L161-2",
-    "seq": 361,
+    "seq": 364,
     "page": 161,
     "kind": "letter",
     "book_date": "1926-01-12",
@@ -8370,7 +8442,7 @@
   },
   {
     "id": "L162-0",
-    "seq": 362,
+    "seq": 365,
     "page": 162,
     "kind": "letter",
     "book_date": "1926-01-15",
@@ -8393,7 +8465,7 @@
   },
   {
     "id": "L162-1",
-    "seq": 363,
+    "seq": 366,
     "page": 162,
     "kind": "letter",
     "book_date": "1926-01-14",
@@ -8416,7 +8488,7 @@
   },
   {
     "id": "L162-1x",
-    "seq": 364,
+    "seq": 367,
     "page": 162,
     "kind": "confidential",
     "book_date": "1926-01-17",
@@ -8440,7 +8512,7 @@
   },
   {
     "id": "L162-1y",
-    "seq": 365,
+    "seq": 368,
     "page": 162,
     "kind": "letter",
     "book_date": "1926-01-19",
@@ -8464,7 +8536,7 @@
   },
   {
     "id": "L164-0",
-    "seq": 366,
+    "seq": 369,
     "page": 164,
     "kind": "letter",
     "book_date": "1926-01-18",
@@ -8487,7 +8559,7 @@
   },
   {
     "id": "L164-1",
-    "seq": 367,
+    "seq": 370,
     "page": 164,
     "kind": "letter",
     "book_date": "1926-01-21",
@@ -8510,7 +8582,7 @@
   },
   {
     "id": "L164-2",
-    "seq": 368,
+    "seq": 371,
     "page": 164,
     "kind": "confidential",
     "book_date": "1926-01-28",
@@ -8533,7 +8605,7 @@
   },
   {
     "id": "L165-0",
-    "seq": 369,
+    "seq": 372,
     "page": 165,
     "kind": "letter",
     "book_date": "1926-01-31",
@@ -8556,7 +8628,7 @@
   },
   {
     "id": "L165-0x",
-    "seq": 370,
+    "seq": 373,
     "page": 165,
     "kind": "letter",
     "book_date": "1926-02-13",
@@ -8580,7 +8652,7 @@
   },
   {
     "id": "L165-1",
-    "seq": 371,
+    "seq": 374,
     "page": 165,
     "kind": "letter",
     "book_date": "1926-02-14",

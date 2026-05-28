@@ -71,6 +71,9 @@
     {"id": "L157-1z", "after_id": "L157-1", "page": 157, "from_key": "SPINLOVE", "from": "James Spinlove", "to_key": "BRASH", "to": "Sir Leslie Brash", "book_date": "1925-12-31"},
     {"id": "L162-1x", "after_id": "L162-1", "page": 162, "kind": "confidential", "from_key": "GRIGBLAY", "from": "Mr. Grigblay", "to_key": "SPINLOVE", "to": "James Spinlove", "book_date": "1926-01-17"},
     {"id": "L162-1y", "after_id": "L162-1", "page": 162, "from_key": "SPINLOVE", "from": "James Spinlove", "to_key": "BRASH", "to": "Sir Leslie Brash", "book_date": "1926-01-19"},
-    {"id": "L165-0x", "after_id": "L165-0", "page": 165, "from_key": "BRASH", "from": "Sir Leslie Brash", "to_key": "SPINLOVE", "to": "James Spinlove", "book_date": "1926-02-13"}
+    {"id": "L165-0x", "after_id": "L165-0", "page": 165, "from_key": "BRASH", "from": "Sir Leslie Brash", "to_key": "SPINLOVE", "to": "James Spinlove", "book_date": "1926-02-13"},
+    {"id": "L015-1x", "after_id": "L015-1", "page": 15, "from_key": "SPINLOVE", "from": "James Spinlove", "to_key": "BRASH", "to": "Sir Leslie Brash", "book_date": "1924-03-09"},
+    {"id": "L021-2x", "after_id": "L021-2", "page": 21, "from_key": "REAKER & SMITH", "from": "Reaker & Smith", "to_key": "SPINLOVE", "to": "James Spinlove", "book_date": "1924-04-16"},
+    {"id": "L023-1x", "after_id": "L023-1", "page": 23, "from_key": "REAKER & SMITH", "from": "Reaker & Smith", "to_key": "SPINLOVE", "to": "James Spinlove", "book_date": "1924-04-19"}
   ]
 }
