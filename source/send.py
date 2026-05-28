@@ -71,6 +71,13 @@ def main():
     # Safety: never send a letter whose text hasn't been cleaned (would be raw OCR).
     raw = [l['id'] for l in letters if not l.get('cleaned')]
     if raw:
+        first_send = min((r['send_date'] for r in recs if r.get('cleaned') and r['send_date']), default=None)
+        if first_send and args.date < first_send:
+            # Pre-start letters (book dates before the project began) are intentionally
+            # never sent, so a manual run for such a date is a graceful no-op, not a failure.
+            print(f"{args.date} is before the first send date ({first_send}); "
+                  f"these pre-start letters are intentionally not sent. Skipping.")
+            return 0
         print(f"ERROR: {args.date} has uncleaned letters {raw}; refusing to send.", file=sys.stderr)
         return 2
 

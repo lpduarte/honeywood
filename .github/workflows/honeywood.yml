@@ -21,6 +21,10 @@ concurrency:
 permissions:
   contents: write   # to push back data/sent_log.json
 
+env:
+  # Node 20 is forced out of GitHub runners on 2026-06-02; run JS actions on Node 24.
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   send:
     runs-on: ubuntu-latest
