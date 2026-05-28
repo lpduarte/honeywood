@@ -45,12 +45,12 @@ jobs:
       - name: Persist sent log
         if: github.event.inputs.dry_run != 'true'
         run: |
-          if ! git diff --quiet -- data/sent_log.json; then
+          git add data/sent_log.json
+          if git diff --cached --quiet; then
+            echo "sent_log.json unchanged; nothing to commit."
+          else
             git config user.name "honeywood-bot"
             git config user.email "actions@users.noreply.github.com"
-            git add data/sent_log.json
             git commit -m "Record sent letters ($(date -u +%F))"
             git push
-          else
-            echo "sent_log.json unchanged; nothing to commit."
           fi
