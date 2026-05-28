@@ -33,10 +33,22 @@ def load_env():
             k, v = line.split('=', 1)
             os.environ.setdefault(k.strip(), v.strip().strip('"\''))
 
+SENT_LOG = ROOT / 'data' / 'sent_log.json'
+
+def load_sent():
+    import json as _j
+    return set(_j.loads(SENT_LOG.read_text())) if SENT_LOG.exists() else set()
+
+def record_sent(d):
+    import json as _j
+    log = load_sent(); log.add(d)
+    SENT_LOG.write_text(_j.dumps(sorted(log), indent=2))
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--date', default=date.today().isoformat())
     ap.add_argument('--dry-run', action='store_true')
+    ap.add_argument('--force', action='store_true', help='send even if already in sent_log')
     args = ap.parse_args()
 
     load_env()
@@ -49,6 +61,11 @@ def main():
     letters = days.get(args.date)
     if not letters:
         print(f"No letters for {args.date}. Nothing to send.")
+        return 0
+
+    # Idempotency: never send the same day twice (re-runs, retries, manual tests).
+    if not args.dry_run and not args.force and args.date in load_sent():
+        print(f"{args.date} already sent (in sent_log). Skipping.")
         return 0
 
     # Safety: never send a letter whose text hasn't been cleaned (would be raw OCR).
@@ -81,6 +98,7 @@ def main():
     with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=ctx) as s:
         s.login(user, pw)
         s.sendmail(user, [recipient], msg.as_string())
+    record_sent(args.date)
     print(f"Sent to {recipient}.")
     return 0
 
