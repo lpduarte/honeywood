@@ -54,7 +54,7 @@ def main():
     load_env()
     user = os.environ.get('GMAIL_USER')
     pw = (os.environ.get('GMAIL_APP_PASSWORD') or '').replace(' ', '')
-    recipient = os.environ.get('RECIPIENT', user)
+    recipients = [a.strip() for a in (os.environ.get('RECIPIENTS') or os.environ.get('RECIPIENT') or user or '').split(',') if a.strip()]
 
     recs = load_merged()
     days = group_by_send_date(recs, future_only=False)
@@ -68,17 +68,16 @@ def main():
         print(f"{args.date} already sent (in sent_log). Skipping.")
         return 0
 
-    # Safety: never send a letter whose text hasn't been cleaned (would be raw OCR).
-    # Letters whose mapped date precedes the project's first scheduled send are pre-start:
-    # the cron never reaches them, so an uncleaned one is skipped (no-op) rather than a failure.
-    # An uncleaned letter ON/AFTER go-live is a real bug and fails loudly.
-    FIRST_SEND = '2026-06-14'
+    # Hard start gate: nothing is EVER emailed before the project's first send date.
+    # Dates before it are backstory, shown only on the archive site. --force / --dry-run bypass.
+    START_SEND = '2026-06-14'
+    if args.date < START_SEND and not args.force and not args.dry_run:
+        print(f"{args.date} precedes the project start ({START_SEND}); archive-only, not emailing.")
+        return 0
+
+    # Safety: never email raw (uncleaned) OCR text.
     raw = [l['id'] for l in letters if not l.get('cleaned')]
     if raw:
-        if args.date < FIRST_SEND:
-            print(f"{args.date} is before the project's first send date ({FIRST_SEND}); "
-                  f"these pre-start letters are intentionally not sent. Skipping.")
-            return 0
         print(f"ERROR: {args.date} has uncleaned letters {raw}; refusing to send.", file=sys.stderr)
         return 2
 
@@ -98,16 +97,16 @@ def main():
     msg = MIMEMultipart('alternative')
     msg['Subject'] = subject
     msg['From'] = formataddr(("The Honeywood File", user))
-    msg['To'] = recipient
+    msg['To'] = formataddr(("The Honeywood File", user))  # real recipients are bcc (envelope only)
     msg.attach(MIMEText("This message is best viewed as HTML.", 'plain'))
     msg.attach(MIMEText(html, 'html'))
 
     ctx = ssl.create_default_context()
     with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=ctx) as s:
         s.login(user, pw)
-        s.sendmail(user, [recipient], msg.as_string())
+        s.sendmail(user, recipients, msg.as_string())
     record_sent(args.date)
-    print(f"Sent to {recipient}.")
+    print(f"Sent to {len(recipients)} recipient(s) (bcc).")
     return 0
 
 if __name__ == '__main__':

@@ -3,15 +3,31 @@
 <style> blocks and external fonts). Georgia is the realistic font; EB Garamond is listed
 first as progressive enhancement for clients that happen to have it."""
 from __future__ import annotations
-import html, re
+import html, re, os
+import money
 
 FONT = "'EB Garamond', Georgia, 'Times New Roman', serif"
+PAPER = '#e8e2d4'  # outer "desk" colour; always the fallback under the pattern image
+
+def _bg():
+    """Outer background: solid PAPER, plus a tiling pattern image when configured.
+    The image needs a public HTTPS URL to render in Gmail; PAPER shows if it's
+    blocked or unset, so the email is never broken."""
+    url = os.environ.get('HONEYWOOD_PATTERN_URL', '').strip()
+    if not url:
+        return f'background-color:{PAPER};'
+    return (f"background-color:{PAPER};background-image:url('{html.escape(url, quote=True)}');"
+            f"background-repeat:repeat;background-size:192px 192px;")
 MONTHS_EN = ['', 'January','February','March','April','May','June',
              'July','August','September','October','November','December']
 
+def _ordinal(d):
+    suffix = 'th' if 10 <= d % 100 <= 20 else {1: 'st', 2: 'nd', 3: 'rd'}.get(d % 10, 'th')
+    return f"{d}{suffix}"
+
 def fmt_date_en(iso):
     y, m, d = map(int, iso.split('-'))
-    return f"{d} {MONTHS_EN[m]} {y}"
+    return f"{_ordinal(d)} {MONTHS_EN[m]}, {y}"
 
 def esc(s): return html.escape(s)
 
@@ -58,6 +74,19 @@ def sheet(rec):
           f'<div style="font-family:{FONT};font-size:14.5px;line-height:1.6;font-style:italic;'
           f'color:#766848;text-align:justify;">{esc(rec["commentary"].strip())}</div></div>')
 
+    money_html = ''
+    mrows = money.rows(rec['body'], int(rec['book_date'][:4])) if rec.get('book_date') else []
+    if mrows:
+        rr = ''.join(
+            f'<tr><td style="font-family:{FONT};font-size:13px;color:#8a7c5e;padding:2px 0;">{esc(l)}</td>'
+            f'<td align="right" style="font-family:{FONT};font-size:13px;color:#8a7c5e;padding:2px 0;">{e}</td></tr>'
+            for l, e in mrows)
+        money_html = (
+          f'<div style="border-top:1px dashed #ddd2b8;margin-top:18px;padding-top:14px;">'
+          f'<div style="font-family:{FONT};font-size:10px;letter-spacing:2px;'
+          f'text-transform:uppercase;color:#b0a282;padding-bottom:8px;">In today\'s money</div>'
+          f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0">{rr}</table></div>')
+
     chapter_html = ''
     if rec.get('chapter_start') and rec.get('chapter'):
         chapter_html = (
@@ -77,7 +106,7 @@ def sheet(rec):
       f'{role_html}'
       f'<div style="font-family:{FONT};font-size:14px;color:#6b5d44;padding-top:7px;">to {to_line}</div>'
       f'<div style="border-bottom:1px solid #ddd2b8;font-size:0;line-height:0;margin:15px 0;">&nbsp;</div>'
-      f'{subject_html}{sal_html}{body_html}{closing_html}{note_html}'
+      f'{subject_html}{sal_html}{body_html}{closing_html}{note_html}{money_html}'
       f'</td></tr></table></td></tr>')
 
 def email_day(recs):
@@ -86,9 +115,9 @@ def email_day(recs):
     return (
       '<!DOCTYPE html><html><head><meta charset="utf-8">'
       '<meta name="viewport" content="width=device-width,initial-scale=1"></head>'
-      '<body style="margin:0;padding:0;background-color:#e8e2d4;">'
-      '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" '
-      'style="background-color:#e8e2d4;"><tr><td align="center" style="padding:30px 12px 40px;">'
+      f'<body style="margin:0;padding:0;{_bg()}">'
+      f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" '
+      f'style="{_bg()}"><tr><td align="center" style="padding:30px 12px 40px;">'
       '<table role="presentation" width="600" cellpadding="0" cellspacing="0" '
       'style="width:600px;max-width:600px;">'
       f'<tr><td align="center" style="font-family:{FONT};font-size:11px;letter-spacing:2px;'

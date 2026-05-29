@@ -38,7 +38,9 @@ jobs:
         env:
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          RECIPIENTS: ${{ secrets.RECIPIENTS }}
           RECIPIENT: ${{ secrets.RECIPIENT }}
+          HONEYWOOD_PATTERN_URL: ${{ vars.HONEYWOOD_PATTERN_URL }}
           SEND_DATE: ${{ github.event.inputs.date }}
           DRY_RUN: ${{ github.event.inputs.dry_run }}
         run: |
