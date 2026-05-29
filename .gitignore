@@ -12,7 +12,12 @@ source/honeywood_full.txt
 
 # Generated previews / screenshots
 *.png
+# but DO track the site/email image assets:
+!assets/*.png
 .playwright-mcp/
+
+# Generated static site (built by the workflow, deployed to Pages)
+site/
 
 # Python
 __pycache__/
