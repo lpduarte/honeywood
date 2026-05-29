@@ -29,9 +29,9 @@ for r in sorted(revealed, key=lambda r: r['seq']):
     bydate.setdefault(r['book_date'], []).append(r)
 isos = sorted(bydate)
 idx = {v: i for i, v in enumerate(isos)}
-letterdays = {tuple(map(int, i.split('-'))) for i in isos}
-frontier_year = TODAY.year - 102
-years = [y for y in (1924, 1925, 1926) if y <= frontier_year] or [1924]
+letterdays = {tuple(map(int, i.split('-'))) for i in isos}           # active (revealed)
+all_letterdays = {tuple(map(int, r['book_date'].split('-'))) for r in recs if r.get('book_date')}
+years = [1924, 1925, 1926]   # full calendar; not-yet-sent days show as pending (ring only)
 
 # ---------- web letter card ----------
 def card_html(rec):
@@ -104,6 +104,7 @@ CSS_CAL = CORE + """
 a.day.has{text-decoration:none;}a.day.has .num{color:var(--card-ink);}
 .ring,.dots{position:absolute;left:1.5%;top:1.5%;width:97%;height:97%;pointer-events:none;mix-blend-mode:multiply;transition:opacity .35s ease,filter .35s ease;}
 .ring{opacity:.8;}.dots{opacity:0;}
+.ring-pending{position:absolute;left:1.5%;top:1.5%;width:97%;height:97%;pointer-events:none;background-color:var(--card-sub);opacity:.42;-webkit-mask:url('ring.png') center/contain no-repeat;mask:url('ring.png') center/contain no-repeat;}
 a.day.has:hover .ring{opacity:1;filter:saturate(1.4) brightness(1.05);}
 a.day.has:hover .dots{opacity:1;}
 a.day.has:hover .num{opacity:0;}
@@ -177,9 +178,11 @@ def mini(y, m):
     for wk in calendar.monthcalendar(y, m):
         for d in wk:
             if d == 0: cells += '<span class="day"></span>'
-            elif (y, m, d) in letterdays:
+            elif (y, m, d) in letterdays:                       # sent -> active, clickable
                 iso = '%04d-%02d-%02d' % (y, m, d)
                 cells += '<a class="day has" href="%s" title="%s"><img class="ring" src="ring.png" alt=""><span class="num">%d</span><img class="dots" src="dots.png" alt=""></a>' % (dayfile(iso), H.escape(bydate[iso][0]["from"]), d)
+            elif (y, m, d) in all_letterdays:                   # not yet sent -> pending (faint ring only)
+                cells += '<span class="day pending"><span class="ring-pending"></span><span class="num e">%d</span></span>' % d
             else: cells += '<span class="day"><span class="num e">%d</span></span>' % d
     return '<div class="mm-card"><div class="mt">%s</div>%s<div class="grid">%s</div></div>' % (calendar.month_name[m], head, cells)
 
