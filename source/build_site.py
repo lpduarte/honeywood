@@ -153,7 +153,8 @@ a.navchev:hover .chev{opacity:1;filter:saturate(1.35) brightness(1.05);}
 def dayfile(i): return "day_%s.html" % i
 def page(css, bodyhtml):
     return ('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
-            '<title>The Honeywood File</title>' + HEADJS + FONT + '<style>' + css + '</style></head><body>' + TOGGLE + bodyhtml + JS + '</body></html>')
+            '<title>The Honeywood File</title><link rel="icon" type="image/png" href="favicon.png">'
+            + HEADJS + FONT + '<style>' + css + '</style></head><body>' + TOGGLE + bodyhtml + JS + '</body></html>')
 
 # ---------- write ----------
 if SITE.exists(): shutil.rmtree(SITE)
