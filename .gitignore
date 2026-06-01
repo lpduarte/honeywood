@@ -10,6 +10,12 @@ source/honeywood.txt
 source/epub_extracted/
 source/honeywood_full.txt
 
+# Intermediate OCR / QA outputs (regeneratable; not needed at runtime)
+source/ocr_text/
+source/letters_index.json
+source/date_anomalies.json
+source/date_outliers.json
+
 # Generated previews / screenshots
 *.png
 # but DO track the site/email image assets:
