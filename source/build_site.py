@@ -50,7 +50,7 @@ def card_html(rec):
     if rec.get('commentary'):
         note_html = '<div class="note"><div class="note-h">Editor’s note</div><div class="note-b">%s</div></div>' % esc(rec['commentary'].strip())
     money_html = ''
-    mrows = money.rows(rec['body'], int(rec['book_date'][:4]))
+    mrows = money.rows(rec['body'] + '\n' + (rec.get('commentary') or ''), int(rec['book_date'][:4]))
     if mrows:
         rr = ''.join('<div class="money-row"><span class="l">%s</span><span class="r">%s</span></div>' % (esc(l), e) for l, e in mrows)
         money_html = '<div class="money"><div class="money-h">In today’s money</div>%s</div>' % rr
