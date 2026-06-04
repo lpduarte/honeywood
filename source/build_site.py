@@ -102,7 +102,10 @@ body{margin:0;background-color:var(--bg);background-image:var(--pat);background-
 CSS_CAL = CORE + """
 .wrap{max-width:980px;margin:0 auto;padding:48px 18px 70px;}
 .title{text-align:center;font-family:'Mea Culpa',cursive;font-weight:400;font-size:54px;color:var(--ink);letter-spacing:0;line-height:1.05;margin:0 0 8px;}
-.sub{text-align:center;color:var(--muted);font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:30px;}
+.sub{text-align:center;color:var(--muted);font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}
+.credit{text-align:center;color:var(--muted);font-size:13px;font-style:italic;margin-bottom:30px;}
+.credit a{color:var(--muted);text-decoration:underline;}
+.credit a:hover{color:var(--ink);}
 .ysep{display:flex;align-items:center;gap:18px;margin:48px 0 26px;color:var(--ink);}
 .ysep:before,.ysep:after{content:"";flex:1;border-top:1px solid var(--rule);}
 .ysep span{font-size:26px;letter-spacing:10px;}
@@ -206,6 +209,9 @@ for y in years:
     body += '<div class="ysep" id="y%d"><span>%d</span></div>' % (y, y)
     body += '<div class="months">' + ''.join(mini(y, m) for m in range(1, 13)) + '</div>'
 cal_body = ('<div class="wrap"><div class="title">The Honeywood File</div>'
-            '<div class="sub">An Adventure in Building &middot; H. B. Creswell</div>' + body + '</div>')
+            '<div class="sub">An Adventure in Building &middot; H. B. Creswell &middot; 1929</div>'
+            '<div class="credit">Inspired by Studio Kirkland&rsquo;s '
+            '<a href="https://honeywooddaily.substack.com/" target="_blank" rel="noopener">Honeywood Daily</a></div>'
+            + body + '</div>')
 (SITE / 'index.html').write_text(page(CSS_CAL, cal_body), encoding='utf-8')
 print("site built: %d day pages, years %s, revealed up to %s" % (len(isos), years, TODAY.isoformat()))
