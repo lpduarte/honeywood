@@ -1,0 +1,13 @@
+# Cloudflare Worker for one-click unsubscribe. Deploy with:
+#   cd worker
+#   npx wrangler login                 # opens the browser to authorize (one time)
+#   npx wrangler secret put GIST_ID    # paste the private gist id
+#   npx wrangler secret put GIST_TOKEN # paste the classic PAT (gist scope)
+#   npx wrangler deploy                # prints the https://<name>.<subdomain>.workers.dev URL
+# Put that URL in the repo variable HONEYWOOD_UNSUB_BASE so the emails point at it.
+#
+# GIST_ID and GIST_TOKEN are set as secrets (via the commands above), never here —
+# this file is committed to a public repo.
+name = "honeywood-unsub"
+main = "worker.js"
+compatibility_date = "2025-06-01"

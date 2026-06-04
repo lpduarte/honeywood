@@ -38,9 +38,11 @@ jobs:
         env:
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
-          RECIPIENTS: ${{ secrets.RECIPIENTS }}
-          RECIPIENT: ${{ secrets.RECIPIENT }}
+          # Recipient list: a private gist (single source of truth — see recipients.py).
+          RECIPIENTS_GIST_ID: ${{ secrets.RECIPIENTS_GIST_ID }}
+          RECIPIENTS_GIST_TOKEN: ${{ secrets.RECIPIENTS_GIST_TOKEN }}
           HONEYWOOD_PATTERN_URL: ${{ vars.HONEYWOOD_PATTERN_URL }}
+          HONEYWOOD_UNSUB_BASE: ${{ vars.HONEYWOOD_UNSUB_BASE }}
           SEND_DATE: ${{ github.event.inputs.date }}
           DRY_RUN: ${{ github.event.inputs.dry_run }}
         run: |

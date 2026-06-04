@@ -25,6 +25,10 @@ source/date_outliers.json
 # Generated static site (built by the workflow, deployed to Pages)
 site/
 
+# Cloudflare Worker (wrangler) local state
+worker/.wrangler/
+node_modules/
+
 # Python
 __pycache__/
 *.pyc
