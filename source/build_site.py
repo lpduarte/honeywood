@@ -20,6 +20,9 @@ calendar.setfirstweekday(0)
 SITE = ROOT / 'site'
 ASSETS = ROOT / 'assets'
 TODAY = date.today()
+# Real time maps onto the book's 1924-26 (1924->2026, i.e. +102y). "Today" in book-space
+# is how far the correspondence has advanced; calendar days up to it render as 'passed'.
+TODAY_BOOK = '%04d-%02d-%02d' % (TODAY.year - 102, TODAY.month, TODAY.day)
 
 # ---------- revealed data (send_date <= today) ----------
 recs = load_merged()
@@ -118,6 +121,7 @@ CSS_CAL = CORE + """
 .day{position:relative;aspect-ratio:1;display:flex;align-items:center;justify-content:center;}
 .num{font-size:12px;color:var(--card-sub);transition:opacity .35s ease;position:relative;z-index:2;}
 .num.e{opacity:.42;}
+.num.passed{color:var(--card-ink);}
 a.day.has{text-decoration:none;}a.day.has .num{color:var(--card-ink);}
 .ring,.dots{position:absolute;left:1.5%;top:1.5%;width:97%;height:97%;pointer-events:none;mix-blend-mode:multiply;transition:opacity .35s ease,filter .35s ease;}
 .ring{opacity:.8;}.dots{opacity:0;}
@@ -201,7 +205,10 @@ def mini(y, m):
                 cells += '<a class="day has" href="%s" title="%s"><img class="ring" src="ring.png" alt=""><span class="num">%d</span><img class="dots" src="dots.png" alt=""></a>' % (dayfile(iso), H.escape(bydate[iso][0]["from"]), d)
             elif (y, m, d) in all_letterdays:                   # not yet sent -> pending (faint ring only)
                 cells += '<span class="day pending"><span class="ring-pending"></span><span class="num e">%d</span></span>' % d
-            else: cells += '<span class="day"><span class="num e">%d</span></span>' % d
+            else:                                               # no letter: ink if the day has passed, faded if still to come
+                iso = '%04d-%02d-%02d' % (y, m, d)
+                cls = 'num passed' if iso <= TODAY_BOOK else 'num e'
+                cells += '<span class="day"><span class="%s">%d</span></span>' % (cls, d)
     return '<div class="mm-card"><div class="mt">%s</div>%s<div class="grid">%s</div></div>' % (calendar.month_name[m], head, cells)
 
 body = ''
