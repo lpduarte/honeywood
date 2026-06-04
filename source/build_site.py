@@ -66,7 +66,19 @@ MOON = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path
 SUN = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.4 4.4l2.1 2.1M17.5 17.5l2.1 2.1M19.6 4.4l-2.1 2.1M6.5 17.5l-2.1 2.1"/></svg>'
 TOGGLE = '<button class="toggle" type="button" aria-label="Light/dark"><span class="ic moon">' + MOON + '</span><span class="ic sun">' + SUN + '</span></button>'
 HEADJS = '<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("hw-theme")||"light")</script>'
-JS = '<script>document.addEventListener("click",function(e){if(!e.target.closest(".toggle"))return;var d=document.documentElement,n=d.getAttribute("data-theme")==="dark"?"light":"dark";localStorage.setItem("hw-theme",n);d.setAttribute("data-theme",n);});</script>'
+JS = ('<script>document.addEventListener("click",function(e){if(!e.target.closest(".toggle"))return;'
+      'var d=document.documentElement,n=d.getAttribute("data-theme")==="dark"?"light":"dark";'
+      'localStorage.setItem("hw-theme",n);d.setAttribute("data-theme",n);});'
+      # Auto-hide the floating toggle on scroll-down, reveal on scroll-up, with a 120px
+      # hysteresis so it doesn\'t flicker; always shown near the top.
+      '(function(){var t=document.querySelector(".toggle");if(!t)return;'
+      'var last=window.scrollY,acc=0,hid=false,TH=120;'
+      'window.addEventListener("scroll",function(){var y=window.scrollY,dy=y-last;last=y;'
+      'if(y<80){if(hid){t.classList.remove("toggle--hidden");hid=false;}acc=0;return;}'
+      'if((dy>0)!==(acc>0))acc=0;acc+=dy;'
+      'if(!hid&&acc>TH){t.classList.add("toggle--hidden");hid=true;acc=0;}'
+      'else if(hid&&acc<-TH){t.classList.remove("toggle--hidden");hid=false;acc=0;}'
+      '},{passive:true});})();</script>')
 FONT = '<link href="https://fonts.googleapis.com/css2?family=Mea+Culpa&family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">'
 
 CORE = """
@@ -79,9 +91,11 @@ CORE = """
 *{box-sizing:border-box}
 body{margin:0;background-color:var(--bg);background-image:var(--pat);background-size:192px;
  font-family:'EB Garamond',Georgia,serif;color:var(--ink);transition:background-color .3s,color .3s;}
-.toggle{position:fixed;top:16px;right:16px;z-index:9;background:var(--card);border:1px solid var(--rule);
+.toggle{position:fixed;bottom:16px;right:16px;z-index:9;background:var(--card);border:1px solid var(--rule);
  border-radius:50%;width:38px;height:38px;cursor:pointer;color:var(--ink);display:flex;align-items:center;
- justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,.12);}
+ justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,.12);
+ transition:opacity .35s ease,transform .35s ease,background-color .3s,color .3s;}
+.toggle--hidden{opacity:0;transform:translateY(150%);pointer-events:none;}
 .ic{display:flex}.sun{display:none}
 [data-theme=dark] .moon{display:none}[data-theme=dark] .sun{display:flex}
 """
