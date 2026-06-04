@@ -13,6 +13,10 @@ on:
         description: 'Render only, do not send (true/false).'
         required: false
         default: 'false'
+      check:
+        description: 'Only check the gist is reachable; do not send (true/false).'
+        required: false
+        default: 'false'
 
 concurrency:
   group: honeywood-send
@@ -20,6 +24,7 @@ concurrency:
 
 permissions:
   contents: write   # to push back data/sent_log.json
+  issues: write     # to open an alert issue if a send fails
 
 env:
   # Node 20 is forced out of GitHub runners on 2026-06-02; run JS actions on Node 24.
@@ -45,13 +50,29 @@ jobs:
           HONEYWOOD_UNSUB_BASE: ${{ vars.HONEYWOOD_UNSUB_BASE }}
           SEND_DATE: ${{ github.event.inputs.date }}
           DRY_RUN: ${{ github.event.inputs.dry_run }}
+          CHECK: ${{ github.event.inputs.check }}
         run: |
-          args=""
-          [ -n "$SEND_DATE" ] && args="$args --date $SEND_DATE"
-          [ "$DRY_RUN" = "true" ] && args="$args --dry-run"
-          python3 send.py $args
+          if [ "$CHECK" = "true" ]; then
+            python3 send.py --check
+          else
+            args=""
+            [ -n "$SEND_DATE" ] && args="$args --date $SEND_DATE"
+            [ "$DRY_RUN" = "true" ] && args="$args --dry-run"
+            # Scheduled run (no explicit date, not a dry-run): catch up any due day not yet sent.
+            { [ -z "$SEND_DATE" ] && [ "$DRY_RUN" != "true" ]; } && args="$args --catchup"
+            python3 send.py $args
+          fi
+      - name: Alert on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create \
+            --title "⚠️ Honeywood daily send FAILED ($(date -u +%F))" \
+            --body "The daily send job failed. Check the run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            || echo "could not open alert issue"
       - name: Persist sent log
-        if: github.event.inputs.dry_run != 'true'
+        if: github.event.inputs.dry_run != 'true' && github.event.inputs.check != 'true'
         run: |
           if [ ! -f data/sent_log.json ]; then
             echo "No sent_log.json (nothing sent); nothing to persist."
