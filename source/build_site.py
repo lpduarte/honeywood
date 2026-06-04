@@ -103,7 +103,7 @@ CSS_CAL = CORE + """
 .wrap{max-width:980px;margin:0 auto;padding:48px 18px 70px;}
 .title{text-align:center;font-family:'Mea Culpa',cursive;font-weight:400;font-size:54px;color:var(--ink);letter-spacing:0;line-height:1.05;margin:0 0 8px;}
 .sub{text-align:center;color:var(--muted);font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}
-.credit{text-align:center;color:var(--muted);font-size:13px;font-style:italic;margin-bottom:30px;}
+.credit{text-align:center;color:var(--muted);font-size:15px;font-style:italic;margin-bottom:30px;}
 .credit a{color:var(--muted);text-decoration:underline;}
 .credit a:hover{color:var(--ink);}
 .ysep{display:flex;align-items:center;gap:18px;margin:48px 0 26px;color:var(--ink);}
