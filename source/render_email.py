@@ -8,6 +8,7 @@ import money
 
 FONT = "'EB Garamond', Georgia, 'Times New Roman', serif"
 PAPER = '#e8e2d4'  # outer "desk" colour; always the fallback under the pattern image
+SITE_URL = 'https://lpduarte.github.io/honeywood/'  # the archive calendar (GitHub Pages)
 
 def _bg():
     """Outer background: solid PAPER, plus a tiling pattern image when configured.
@@ -109,9 +110,25 @@ def sheet(rec):
       f'{subject_html}{sal_html}{body_html}{closing_html}{note_html}{money_html}'
       f'</td></tr></table></td></tr>')
 
-def email_day(recs):
+def email_day(recs, unsub_url=None):
     day = fmt_date_en(recs[0]['book_date'])
     sheets = ''.join(sheet(r) for r in recs)
+    # Footer links, masthead style (uppercase, letter-spaced), each set off by a short rule.
+    rule = ('<tr><td align="center" style="padding-top:14px;font-size:0;line-height:0;">'
+            '<table role="presentation" align="center" cellpadding="0" cellspacing="0"><tr>'
+            '<td style="border-top:1px solid #bfb088;width:30px;font-size:0;line-height:0;height:1px;">&nbsp;</td>'
+            '</tr></table></td></tr>')
+    link_style = (f'font-family:{FONT};font-size:11px;letter-spacing:2px;'
+                  f'text-transform:uppercase;color:#a89a78;padding-top:14px;')
+    footer_links = rule + (
+      f'<tr><td align="center" style="{link_style}">'
+      f'<a href="{SITE_URL}" style="color:#a89a78;text-decoration:underline;">'
+      f'Read earlier letters</a></td></tr>')
+    if unsub_url:
+        footer_links += rule + (
+          f'<tr><td align="center" style="{link_style}">'
+          f'<a href="{html.escape(unsub_url, quote=True)}" '
+          f'style="color:#a89a78;text-decoration:underline;">Stop further correspondence</a></td></tr>')
     return (
       '<!DOCTYPE html><html><head><meta charset="utf-8">'
       '<meta name="viewport" content="width=device-width,initial-scale=1"></head>'
@@ -127,6 +144,7 @@ def email_day(recs):
       f'<tr><td align="center" style="font-family:{FONT};font-size:11px;letter-spacing:2px;'
       f'text-transform:uppercase;color:#a89a78;padding-top:8px;">'
       f'An Adventure in Building &middot; H. B. Creswell</td></tr>'
+      f'{footer_links}'
       '</table></td></tr></table></body></html>')
 
 def subject_line(recs):
