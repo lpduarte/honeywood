@@ -211,10 +211,16 @@ def mini(y, m):
                 cells += '<span class="day"><span class="%s">%d</span></span>' % (cls, d)
     return '<div class="mm-card"><div class="mt">%s</div>%s<div class="grid">%s</div></div>' % (calendar.month_name[m], head, cells)
 
+# Last month with any correspondence, per year — trailing empty months (e.g. 1926
+# after February) add nothing, so we stop there rather than padding the year to 12.
+last_month = {}
+for (y, m, _) in all_letterdays:
+    last_month[y] = max(last_month.get(y, 0), m)
+
 body = ''
 for y in years:
     body += '<div class="ysep" id="y%d"><span>%d</span></div>' % (y, y)
-    body += '<div class="months">' + ''.join(mini(y, m) for m in range(1, 13)) + '</div>'
+    body += '<div class="months">' + ''.join(mini(y, m) for m in range(1, last_month.get(y, 12) + 1)) + '</div>'
 cal_body = ('<div class="wrap"><div class="title">The Honeywood File</div>'
             '<div class="sub">An Adventure in Building &middot; H. B. Creswell &middot; 1929</div>'
             '<div class="credit">Inspired by Studio Kirkland&rsquo;s '
