@@ -76,7 +76,10 @@ def sheet(rec):
           f'color:#766848;text-align:justify;">{esc(rec["commentary"].strip())}</div></div>')
 
     money_html = ''
-    mrows = money.rows(rec['body'], int(rec['book_date'][:4])) if rec.get('book_date') else []
+    # Scan the letter body AND the editor's commentary, so figures the editor cites
+    # (e.g. "£25" in a note) are also converted. money.rows dedups by label.
+    money_text = rec['body'] + '\n' + (rec.get('commentary') or '')
+    mrows = money.rows(money_text, int(rec['book_date'][:4])) if rec.get('book_date') else []
     if mrows:
         rr = ''.join(
             f'<tr><td style="font-family:{FONT};font-size:13px;color:#8a7c5e;padding:2px 0;">{esc(l)}</td>'

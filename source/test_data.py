@@ -55,6 +55,11 @@ check('infinitum (sic)' in body('L162-1') and 'ad infinitum' not in body('L162-1
 check('½ in. joints' in body('L077-2'), "L077-2: '½ in.' regression")
 check('½ in.' in body('L079-0'), "L079-0: '½ in.' regression")
 
+# 'In today's money' must also scan the editor's commentary (L026-2 cites £25 in its note).
+def comm(i): return cleaned.get(i, {}).get('commentary', '')
+check(any(lbl == '£25' for lbl, _ in money.rows(body('L026-2') + '\n' + comm('L026-2'), 1924)),
+      "L026-2: editor-note £25 missing from money rows (commentary not scanned)")
+
 if errors:
     print(f"FAIL ({len(errors)}):")
     for e in errors: print('  -', e)
