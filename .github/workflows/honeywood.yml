@@ -3,7 +3,11 @@ name: Honeywood daily letter
 on:
   schedule:
     # 11:00 UTC ≈ 12:00 Lisbon in summer (WEST); 11:00 in winter (WET).
+    # A second run at 17:00 UTC is a safety net: GitHub's scheduler is best-effort
+    # and may skip a run. --catchup is idempotent (sent_log prevents resends), so a
+    # later run recovers the same day instead of leaving it for tomorrow's cron.
     - cron: '0 11 * * *'
+    - cron: '0 17 * * *'
   workflow_dispatch:
     inputs:
       date:
@@ -18,14 +22,6 @@ on:
         required: false
         default: 'false'
 
-concurrency:
-  group: honeywood-send
-  cancel-in-progress: false
-
-permissions:
-  contents: write   # to push back data/sent_log.json
-  issues: write     # to open an alert issue if a send fails
-
 env:
   # Node 20 is forced out of GitHub runners on 2026-06-02; run JS actions on Node 24.
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -33,6 +29,12 @@ env:
 jobs:
   send:
     runs-on: ubuntu-latest
+    concurrency:
+      group: honeywood-send
+      cancel-in-progress: false
+    permissions:
+      contents: write   # to push back data/sent_log.json
+      issues: write     # to open an alert issue if a send fails
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -87,3 +89,35 @@ jobs:
             git commit -m "Record sent letters ($(date -u +%F))"
             git push
           fi
+
+  # Rebuild & deploy the archive site in the SAME run as the send, so the calendar's
+  # day-tracking and the newly-revealed letter advance together (one reliable cron, no
+  # separate site.yml schedule to drift out of sync). if: !cancelled() so the calendar
+  # still advances even if the email send failed — the site reveals by date, not sent_log.
+  deploy:
+    needs: send
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build the archive site (revealed up to today)
+        run: python3 source/build_site.py
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./site
+      - id: deployment
+        uses: actions/deploy-pages@v4
