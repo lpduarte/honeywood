@@ -1,9 +1,9 @@
 name: Build & deploy archive site
 
+# Rebuild on code/data changes. The DAILY rebuild (day-tracking + newly-revealed letters)
+# now runs inside honeywood.yml, in the same run as the send, so there is no separate
+# schedule here to drift out of sync. Keep this for push-driven and manual rebuilds.
 on:
-  schedule:
-    # 11:15 UTC — just after the daily send, so newly-revealed days appear.
-    - cron: '15 11 * * *'
   workflow_dispatch:
   push:
     branches: [main]
