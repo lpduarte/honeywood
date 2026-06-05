@@ -24,7 +24,8 @@ def load_merged():
             r['cleaned'] = False
     return recs
 
-def group_by_send_date(recs, future_only=True, today=date(2026,5,28)):
+def group_by_send_date(recs, future_only=True, today=None):
+    if today is None: today = date.today()
     days = OrderedDict()
     for r in sorted(recs, key=lambda r:(r['send_date'] or '9999', r['seq'])):
         if not r['send_date']: continue
