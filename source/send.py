@@ -48,6 +48,13 @@ def record_sent(d):
     log = load_sent(); log.add(d)
     SENT_LOG.write_text(_j.dumps(sorted(log), indent=2))
 
+def mask_email(addr):
+    """Mask a recipient address for logs. CI logs on a public repo are public, and
+    recipient addresses (loaded from the gist at runtime) are not secrets, so they
+    would not be masked automatically — keep them out of failure output."""
+    local, _, domain = addr.partition('@')
+    return f"{(local[:1] or '')}***@{domain}" if domain else "***"
+
 START_SEND = '2026-06-14'  # nothing is EVER emailed before this; earlier dates are archive-only
 
 def _send_day(s, letters, subject, user, recipients, unsub_base):
@@ -153,7 +160,7 @@ def main():
             record_sent(d)
             print(f"{d}: {len(letters)} letter(s) -> sent to {sent} recipient(s); {len(failed)} failed.")
             for addr, err in failed:
-                print(f"  FAILED {addr}: {err}", file=sys.stderr)
+                print(f"  FAILED {mask_email(addr)}: {err}", file=sys.stderr)
             if failed: rc = rc or 3
     return rc
 
