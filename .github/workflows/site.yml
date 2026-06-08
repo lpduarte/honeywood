@@ -12,7 +12,6 @@ permissions:
   contents: read
   pages: write
   id-token: write
-  actions: read     # status.html reads recent workflow runs (cron delay) via the API
 
 concurrency:
   group: pages
@@ -34,8 +33,6 @@ jobs:
           python-version: '3.12'
       - name: Build the archive site (revealed up to today)
         run: python3 source/build_site.py
-        env:
-          GH_TOKEN: ${{ github.token }}   # authenticated API: avoids the shared-IP anon rate limit
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
