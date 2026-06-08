@@ -187,7 +187,14 @@ CSS_STATUS = CORE + """
 .chart .xl{text-anchor:middle;}.chart .yl{text-anchor:end;}
 .chart .ln{fill:none;stroke-width:1.6;}
 .chart .ln.s11{stroke:#b0763e;}.chart .ln.s17{stroke:#6f8f6a;}
+.chart .pt{pointer-events:none;}
 .chart .pt.s11{fill:#b0763e;}.chart .pt.s17{fill:#6f8f6a;}
+.chart .guide{stroke:var(--card-sub);stroke-width:1;stroke-dasharray:3 3;pointer-events:none;}
+.chart .hit{fill:transparent;cursor:pointer;}
+.chart .tip{pointer-events:none;}
+.chart .tip rect{fill:rgba(43,38,32,.92);}
+.chart .tip text{fill:#faf6ec;font-size:10px;}
+[data-theme=dark] .chart .tip rect{fill:rgba(15,13,10,.95);}
 .updated{text-align:center;color:var(--muted);font-size:12px;font-style:italic;margin-top:16px;}
 """
 
@@ -285,7 +292,7 @@ STATUS_JS = """
     if(!days.length){ chart.textContent='Sem execuções agendadas na janela.'; return; }
     var d0=Math.min.apply(null,days), maxMin=60;
     [11,17].forEach(function(s){ for(var k in pts[s]) if(pts[s][k]>maxMin) maxMin=pts[s][k]; });
-    chart.innerHTML=svg(pts,d0,today,maxMin);
+    chart.innerHTML=svg(pts,d0,today,maxMin); wire();
     upd.textContent='Atualizado '+now.toLocaleString('pt-PT',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
   }
   function fmt(m){ m=Math.round(m); if(m<60) return m+'m'; var r=m%60; return (m/60|0)+'h'+(r<10?'0':'')+r; }
@@ -299,13 +306,37 @@ STATUS_JS = """
     var nDays=Math.round(span/DAYMS), step=Math.max(1,Math.ceil(nDays/6));
     for(var d=d0; d<=d1+1; d+=step*DAYMS){ var t=new Date(d);
       o+='<text class="xl" x="'+X(d)+'" y="'+(H-8)+'">'+t.getUTCDate()+'/'+(t.getUTCMonth()+1)+'</text>'; }
+    o+='<line class="guide" x1="0" x2="0" y1="'+T+'" y2="'+(T+ih)+'" opacity="0"/>';
+    var hits='';
     [11,17].forEach(function(s){
       var ds=Object.keys(pts[s]).map(Number).sort(function(a,b){return a-b;});
       if(ds.length>1) o+='<polyline class="ln s'+s+'" points="'+ds.map(function(d){return X(d)+','+Y(pts[s][d]);}).join(' ')+'"/>';
-      ds.forEach(function(d){ var t=new Date(d);
-        o+='<circle class="pt s'+s+'" cx="'+X(d)+'" cy="'+Y(pts[s][d])+'" r="2.6"><title>'+t.getUTCDate()+'/'+(t.getUTCMonth()+1)+' '+s+':00 +'+fmt(pts[s][d])+'</title></circle>'; });
+      ds.forEach(function(d){ var cx=X(d), cy=Y(pts[s][d]), t=new Date(d);
+        o+='<circle class="pt s'+s+'" cx="'+cx+'" cy="'+cy+'" r="2.6"/>';
+        var lab=t.getUTCDate()+'/'+(t.getUTCMonth()+1)+' · '+s+':00 · +'+fmt(pts[s][d]);
+        hits+='<circle class="hit" cx="'+cx+'" cy="'+cy+'" r="11" data-x="'+cx.toFixed(1)+'" data-y="'+cy.toFixed(1)+'" data-l="'+lab+'"/>';
+      });
     });
-    return o+'</svg>';
+    o+='<g class="tip" opacity="0"><rect rx="3" height="17"></rect><text></text></g>';
+    return o+hits+'</svg>';
+  }
+  function wire(){
+    var s=chart.querySelector('svg'); if(!s) return;
+    var guide=s.querySelector('.guide'), tip=s.querySelector('.tip'),
+        rect=tip.querySelector('rect'), txt=tip.querySelector('text');
+    s.querySelectorAll('.hit').forEach(function(h){
+      h.addEventListener('mouseenter',function(){
+        var x=+h.getAttribute('data-x'), y=+h.getAttribute('data-y'), up=y>110;
+        guide.setAttribute('x1',x); guide.setAttribute('x2',x); guide.style.opacity=1;
+        txt.textContent=h.getAttribute('data-l');
+        var w=txt.getComputedTextLength()+14, tx=Math.min(Math.max(x-w/2,2),558-w);
+        tip.setAttribute('transform','translate('+tx+','+(y+(up?-9:9))+')');
+        rect.setAttribute('width',w); rect.setAttribute('y',up?-17:0);
+        txt.setAttribute('x',7); txt.setAttribute('y',up?-4.5:12.5);
+        tip.style.opacity=1;
+      });
+      h.addEventListener('mouseleave',function(){ guide.style.opacity=0; tip.style.opacity=0; });
+    });
   }
 })();
 """
@@ -313,7 +344,7 @@ status_body = (
     '<div class="swrap">'
     '<div class="title">The Honeywood File</div><div class="sub">Status</div>'
     '<div class="scard">'
-    '<h2>Atraso do cron &middot; 11:00 vs 17:00</h2>'
+    '<h2>Atraso do cron</h2>'
     '<div class="legend"><span class="lg a">11:00</span><span class="lg b">17:00</span></div>'
     '<div id="chart" class="chart">a carregar&hellip;</div>'
     '<div class="updated" id="updated"></div>'
