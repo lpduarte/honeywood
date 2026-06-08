@@ -101,11 +101,11 @@ body{margin:0;background-color:var(--bg);background-image:var(--pat);background-
 .toggle--hidden{opacity:0;transform:translateY(150%);pointer-events:none;}
 .ic{display:flex}.sun{display:none}
 [data-theme=dark] .moon{display:none}[data-theme=dark] .sun{display:flex}
+.title{text-align:center;font-family:'Mea Culpa',cursive;font-weight:400;font-size:54px;color:var(--ink);letter-spacing:0;line-height:1.05;margin:0 0 8px;}
+.sub{text-align:center;color:var(--muted);font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}
 """
 CSS_CAL = CORE + """
 .wrap{max-width:980px;margin:0 auto;padding:48px 18px 70px;}
-.title{text-align:center;font-family:'Mea Culpa',cursive;font-weight:400;font-size:54px;color:var(--ink);letter-spacing:0;line-height:1.05;margin:0 0 8px;}
-.sub{text-align:center;color:var(--muted);font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}
 .credit{text-align:center;color:var(--muted);font-size:15px;font-style:italic;margin-bottom:30px;}
 .credit a{color:var(--muted);text-decoration:underline;}
 .credit a:hover{color:var(--ink);}
@@ -171,9 +171,8 @@ a.navchev:hover .chev{opacity:1;filter:saturate(1.35) brightness(1.05);}
 @media(max-width:560px){.card{padding:28px 24px;}}
 """
 CSS_STATUS = CORE + """
-.swrap{max-width:600px;margin:0 auto;padding:54px 18px 70px;}
-.stitle{text-align:center;font-family:'Mea Culpa',cursive;font-weight:400;font-size:48px;color:var(--ink);line-height:1.05;margin:0 0 6px;}
-.ssub{text-align:center;color:var(--muted);font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:34px;}
+.swrap{max-width:600px;margin:0 auto;padding:48px 18px 70px;}
+.swrap .sub{margin-bottom:32px;}
 .scard{background:var(--card);border-radius:8px;padding:22px 24px 16px;box-shadow:0 1px 2px rgba(0,0,0,.06);}
 .scard h2{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--card-sub);font-weight:400;margin:0 0 4px;}
 .legend{display:flex;gap:18px;justify-content:flex-end;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--card-sub);margin-bottom:8px;}
@@ -312,7 +311,7 @@ STATUS_JS = """
 """
 status_body = (
     '<div class="swrap">'
-    '<div class="stitle">The Honeywood File</div><div class="ssub">Status</div>'
+    '<div class="title">The Honeywood File</div><div class="sub">Status</div>'
     '<div class="scard">'
     '<h2>Atraso do cron &middot; 11:00 vs 17:00</h2>'
     '<div class="legend"><span class="lg a">11:00</span><span class="lg b">17:00</span></div>'
