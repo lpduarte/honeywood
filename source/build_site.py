@@ -176,11 +176,6 @@ CSS_STATUS = CORE + """
 .ssub{text-align:center;color:var(--muted);font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:34px;}
 .scard{background:var(--card);border-radius:8px;padding:20px 24px;margin-bottom:18px;box-shadow:0 1px 2px rgba(0,0,0,.06);}
 .scard h2{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--card-sub);font-weight:400;margin:0 0 14px;}
-.metric{display:flex;justify-content:space-between;align-items:baseline;padding:4px 0;color:var(--card-ink);font-size:16px;}
-.metric .k{color:var(--card-sub);font-size:14px;}
-.metric b{font-size:18px;}
-.bar{height:8px;border-radius:4px;background:var(--card-rule);overflow:hidden;margin-top:10px;}
-.bar>span{display:block;height:100%;background:var(--card-sub);}
 table.runs{width:100%;border-collapse:collapse;font-size:13px;}
 table.runs td{padding:6px 0;border-bottom:1px solid var(--card-rule);color:var(--card-ink);}
 table.runs tr:last-child td{border-bottom:none;}
@@ -247,7 +242,6 @@ cal_body = ('<div class="wrap"><div class="title">The Honeywood File</div>'
 (SITE / 'index.html').write_text(page(CSS_CAL, cal_body), encoding='utf-8')
 
 # ---------- status page (operational dashboard; not linked from the archive) ----------
-START_SEND = '2026-06-14'      # keep in sync with send.py: nothing is emailed before this
 CRON_UTC = [(11, 0), (17, 0)]  # keep in sync with honeywood.yml schedule
 
 def _fetch_runs(n=14):
@@ -282,33 +276,12 @@ def _run_row(run):
     return '<tr><td>%s</td><td>%s</td><td class="r">&mdash;</td><td class="r">%s</td></tr>' % (
         day, H.escape(run.get('event', '?')), mark)
 
-sent_days = set()
-try: sent_days = set(json.loads((ROOT / 'data' / 'sent_log.json').read_text()))
-except Exception: pass
-
-total_letters = len([r for r in recs if r.get('send_date')])
-sent_n = len([r for r in recs if r.get('send_date') in sent_days])
-pct = round(100 * len(revealed) / total_letters) if total_letters else 0
-day_marker = TODAY_BOOK   # how far the calendar's day-tracking has advanced (book-space)
-horizon = max(TODAY.isoformat(), START_SEND)
-future = sorted((r for r in recs if r.get('send_date') and r['send_date'] >= horizon
-                 and r['send_date'] not in sent_days), key=lambda r: r['send_date'])
-next_book = future[0]['book_date'] if future else None
-
 rows = ''.join(_run_row(r) for r in _fetch_runs()) or \
     '<tr><td colspan="4" style="color:var(--muted)">Execu&ccedil;&otilde;es indispon&iacute;veis.</td></tr>'
-sent_txt = ('come&ccedil;a a %s' % fmt_date_en('1924-%s-%s' % (START_SEND[5:7], START_SEND[8:10]))) if sent_n == 0 else '<b>%d</b>' % sent_n
 gen = datetime.now(timezone.utc)
 status_body = (
     '<div class="swrap">'
     '<div class="stitle">The Honeywood File</div><div class="ssub">Status</div>'
-    '<div class="scard"><h2>Progresso</h2>'
-    '<div class="metric"><span class="k">Reveladas no arquivo</span><span><b>%d</b> / %d</span></div>'
-    '<div class="bar"><span style="width:%d%%"></span></div>'
-    '<div class="metric" style="margin-top:14px"><span class="k">Enviadas por email</span><span>%s</span></div></div>'
-    '<div class="scard"><h2>Ciclo</h2>'
-    '<div class="metric"><span class="k">Dia atual no calend&aacute;rio</span><span>%s</span></div>'
-    '<div class="metric"><span class="k">Pr&oacute;ximo email</span><span>%s</span></div></div>'
     '<div class="scard"><h2>Execu&ccedil;&otilde;es &middot; atraso do cron</h2>'
     '<table class="runs"><tbody>%s</tbody></table></div>'
     '<div class="gen">Gerado em %s<span id="ago"></span></div>'
@@ -317,10 +290,7 @@ status_body = (
     'e.textContent=" \\u00b7 "+(d<=0?"hoje":(d===1?"h\\u00e1 1 dia":"h\\u00e1 "+d+" dias"));'
     'if(d>=1)e.style.color="#b0564c";})();</script>'
     '</div>'
-) % (len(revealed), total_letters, pct, sent_txt,
-     fmt_date_en(day_marker),
-     fmt_date_en(next_book) if next_book else '&mdash;',
-     rows, gen.strftime('%-d %b %Y, %H:%M UTC'), gen.strftime('%Y-%m-%dT%H:%M:%SZ'))
+) % (rows, gen.strftime('%-d %b %Y, %H:%M UTC'), gen.strftime('%Y-%m-%dT%H:%M:%SZ'))
 (SITE / 'status.html').write_text(page(CSS_STATUS, status_body), encoding='utf-8')
 
 print("site built: %d day pages, years %s, revealed up to %s (+ status.html)" % (len(isos), years, TODAY.isoformat()))
