@@ -5,9 +5,9 @@ Only letters whose mapped send_date is <= today are revealed (future ones are no
 written to disk, so they can't be read ahead in the page source). Calendar years are shown
 from 1924 up to the current frontier year. Run daily by the workflow; output deploys to Pages.
 """
-import sys, calendar, shutil, html as H, os, json, urllib.request
+import sys, calendar, shutil, html as H
 from collections import OrderedDict
-from datetime import date, datetime, timezone
+from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
@@ -171,17 +171,25 @@ a.navchev:hover .chev{opacity:1;filter:saturate(1.35) brightness(1.05);}
 @media(max-width:560px){.card{padding:28px 24px;}}
 """
 CSS_STATUS = CORE + """
-.swrap{max-width:640px;margin:0 auto;padding:54px 18px 70px;}
+.swrap{max-width:600px;margin:0 auto;padding:54px 18px 70px;}
 .stitle{text-align:center;font-family:'Mea Culpa',cursive;font-weight:400;font-size:48px;color:var(--ink);line-height:1.05;margin:0 0 6px;}
 .ssub{text-align:center;color:var(--muted);font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:34px;}
-.scard{background:var(--card);border-radius:8px;padding:20px 24px;margin-bottom:18px;box-shadow:0 1px 2px rgba(0,0,0,.06);}
-.scard h2{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--card-sub);font-weight:400;margin:0 0 14px;}
-table.runs{width:100%;border-collapse:collapse;font-size:13px;}
-table.runs td{padding:6px 0;border-bottom:1px solid var(--card-rule);color:var(--card-ink);}
-table.runs tr:last-child td{border-bottom:none;}
-table.runs td.r{text-align:right;font-variant-numeric:tabular-nums;color:var(--card-sub);}
-.ok{color:#5a7d4a;}.bad{color:#b0564c;}
-.gen{text-align:center;color:var(--muted);font-size:12px;font-style:italic;margin-top:26px;}
+.scard{background:var(--card);border-radius:8px;padding:22px 24px 16px;box-shadow:0 1px 2px rgba(0,0,0,.06);}
+.scard h2{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--card-sub);font-weight:400;margin:0 0 4px;}
+.legend{display:flex;gap:18px;justify-content:flex-end;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--card-sub);margin-bottom:8px;}
+.legend .lg{display:inline-flex;align-items:center;gap:6px;}
+.legend .lg:before{content:"";width:14px;height:2px;display:inline-block;}
+.legend .a:before{background:#b0763e;}
+.legend .b:before{background:#6f8f6a;}
+.chart{min-height:160px;color:var(--card-sub);font-size:13px;display:flex;align-items:center;justify-content:center;}
+.chart svg{width:100%;height:auto;}
+.chart .grid{stroke:var(--card-rule);stroke-width:1;}
+.chart .yl,.chart .xl{fill:var(--card-sub);font-size:9px;}
+.chart .xl{text-anchor:middle;}.chart .yl{text-anchor:end;}
+.chart .ln{fill:none;stroke-width:1.6;}
+.chart .ln.s11{stroke:#b0763e;}.chart .ln.s17{stroke:#6f8f6a;}
+.chart .pt.s11{fill:#b0763e;}.chart .pt.s17{fill:#6f8f6a;}
+.updated{text-align:center;color:var(--muted);font-size:12px;font-style:italic;margin-top:16px;}
 """
 
 def dayfile(i): return "day_%s.html" % i
@@ -242,55 +250,77 @@ cal_body = ('<div class="wrap"><div class="title">The Honeywood File</div>'
 (SITE / 'index.html').write_text(page(CSS_CAL, cal_body), encoding='utf-8')
 
 # ---------- status page (operational dashboard; not linked from the archive) ----------
-CRON_UTC = [(11, 0), (17, 0)]  # keep in sync with honeywood.yml schedule
+# Static shell; the chart data is fetched LIVE in the browser from the public runs API,
+# so the page is always current regardless of when it was last deployed. No token needed
+# (public repo) — the rate limit is the visitor's own IP. Degrades to a message on failure.
+# One chart, two lines (the 11:00 and 17:00 cron slots) sharing a date X-axis, so a slot
+# that started later simply begins partway across; Y is the delay vs the scheduled time.
+STATUS_JS = """
+(function(){
+  var REPO='lpduarte/honeywood', DAYS=30, SLOTS=[11,17], DAYMS=864e5;
+  var chart=document.getElementById('chart'), upd=document.getElementById('updated');
+  fetch('https://api.github.com/repos/'+REPO+'/actions/workflows/honeywood.yml/runs?per_page=100',
+        {headers:{'Accept':'application/vnd.github+json'}})
+    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+    .then(function(d){ render(d.workflow_runs||[]); })
+    .catch(function(){ chart.textContent='Execuções indisponíveis.'; });
 
-def _fetch_runs(n=14):
-    """Last n honeywood runs from the public API. Uses GH_TOKEN/GITHUB_TOKEN if present
-    (avoids the shared-IP anon rate limit on runners); returns [] on any failure so the
-    page degrades gracefully rather than breaking the build."""
-    url = ('https://api.github.com/repos/lpduarte/honeywood/actions/workflows/'
-           'honeywood.yml/runs?per_page=%d' % n)
-    req = urllib.request.Request(url, headers={'Accept': 'application/vnd.github+json',
-                                               'User-Agent': 'honeywood-status'})
-    tok = os.environ.get('GH_TOKEN') or os.environ.get('GITHUB_TOKEN')
-    if tok: req.add_header('Authorization', 'Bearer ' + tok)
-    try:
-        with urllib.request.urlopen(req, timeout=15) as r:
-            return json.loads(r.read()).get('workflow_runs', [])
-    except Exception:
-        return []
-
-def _run_row(run):
-    t = datetime.fromisoformat(run['created_at'].replace('Z', '+00:00'))
-    concl = run.get('conclusion') or run.get('status') or '?'
-    mark = '<span class="ok">&#10003;</span>' if concl == 'success' else '<span class="bad" title="%s">&#10007;</span>' % H.escape(concl)
-    day = t.strftime('%-d %b')
-    if run.get('event') == 'schedule':
-        prior = [t.replace(hour=h, minute=m, second=0, microsecond=0) for h, m in CRON_UTC]
-        prior = [s for s in prior if s <= t]
-        if prior:
-            s = max(prior); mins = int((t - s).total_seconds() // 60)
-            d = '%dh%02d' % (mins // 60, mins % 60) if mins >= 60 else '%dm' % mins
-            return '<tr><td>%s</td><td>%s &rarr; %s</td><td class="r">+%s</td><td class="r">%s</td></tr>' % (
-                day, s.strftime('%H:%M'), t.strftime('%H:%M'), d, mark)
-    return '<tr><td>%s</td><td>%s</td><td class="r">&mdash;</td><td class="r">%s</td></tr>' % (
-        day, H.escape(run.get('event', '?')), mark)
-
-rows = ''.join(_run_row(r) for r in _fetch_runs()) or \
-    '<tr><td colspan="4" style="color:var(--muted)">Execu&ccedil;&otilde;es indispon&iacute;veis.</td></tr>'
-gen = datetime.now(timezone.utc)
+  // For a scheduled run, the nearest UTC slot at or before its start, and the delay (min).
+  function slotOf(run){
+    var t=new Date(run.created_at), h=t.getUTCHours()+t.getUTCMinutes()/60, slot=null;
+    for(var i=0;i<SLOTS.length;i++){ if(SLOTS[i]<=h) slot=SLOTS[i]; }
+    if(slot===null) return null;
+    var sched=Date.UTC(t.getUTCFullYear(),t.getUTCMonth(),t.getUTCDate(),slot);
+    return {slot:slot, day:Date.UTC(t.getUTCFullYear(),t.getUTCMonth(),t.getUTCDate()),
+            mins:Math.round((t-sched)/60000)};
+  }
+  function render(runs){
+    var now=new Date(), today=Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate());
+    var minDay=today-(DAYS-1)*DAYMS, pts={11:{},17:{}};
+    runs.forEach(function(run){
+      if(run.event!=='schedule') return;
+      var x=slotOf(run); if(!x||x.day<minDay) return;
+      if(pts[x.slot][x.day]===undefined) pts[x.slot][x.day]=x.mins;  // newest-first: keep latest per day/slot
+    });
+    var days=[]; [11,17].forEach(function(s){ for(var k in pts[s]) days.push(+k); });
+    if(!days.length){ chart.textContent='Sem execuções agendadas na janela.'; return; }
+    var d0=Math.min.apply(null,days), maxMin=60;
+    [11,17].forEach(function(s){ for(var k in pts[s]) if(pts[s][k]>maxMin) maxMin=pts[s][k]; });
+    chart.innerHTML=svg(pts,d0,today,maxMin);
+    upd.textContent='Atualizado '+now.toLocaleString('pt-PT',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
+  }
+  function fmt(m){ m=Math.round(m); if(m<60) return m+'m'; var r=m%60; return (m/60|0)+'h'+(r<10?'0':'')+r; }
+  function svg(pts,d0,d1,maxMin){
+    var W=560,H=220,L=42,R=14,T=14,B=28, iw=W-L-R, ih=H-T-B, span=Math.max(d1-d0,DAYMS);
+    var X=function(d){return L+(d-d0)/span*iw;}, Y=function(m){return T+ih-(m/maxMin)*ih;};
+    var o='<svg viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="xMidYMid meet">';
+    [0,maxMin/2,maxMin].forEach(function(m){ var y=Y(m);
+      o+='<line class="grid" x1="'+L+'" y1="'+y+'" x2="'+(W-R)+'" y2="'+y+'"/>';
+      o+='<text class="yl" x="'+(L-6)+'" y="'+(y+3)+'">'+fmt(m)+'</text>'; });
+    var nDays=Math.round(span/DAYMS), step=Math.max(1,Math.ceil(nDays/6));
+    for(var d=d0; d<=d1+1; d+=step*DAYMS){ var t=new Date(d);
+      o+='<text class="xl" x="'+X(d)+'" y="'+(H-8)+'">'+t.getUTCDate()+'/'+(t.getUTCMonth()+1)+'</text>'; }
+    [11,17].forEach(function(s){
+      var ds=Object.keys(pts[s]).map(Number).sort(function(a,b){return a-b;});
+      if(ds.length>1) o+='<polyline class="ln s'+s+'" points="'+ds.map(function(d){return X(d)+','+Y(pts[s][d]);}).join(' ')+'"/>';
+      ds.forEach(function(d){ var t=new Date(d);
+        o+='<circle class="pt s'+s+'" cx="'+X(d)+'" cy="'+Y(pts[s][d])+'" r="2.6"><title>'+t.getUTCDate()+'/'+(t.getUTCMonth()+1)+' '+s+':00 +'+fmt(pts[s][d])+'</title></circle>'; });
+    });
+    return o+'</svg>';
+  }
+})();
+"""
 status_body = (
     '<div class="swrap">'
     '<div class="stitle">The Honeywood File</div><div class="ssub">Status</div>'
-    '<div class="scard"><h2>Execu&ccedil;&otilde;es &middot; atraso do cron</h2>'
-    '<table class="runs"><tbody>%s</tbody></table></div>'
-    '<div class="gen">Gerado em %s<span id="ago"></span></div>'
-    '<script>(function(){var g=new Date("%s"),n=new Date(),d=Math.floor((n-g)/864e5),'
-    'e=document.getElementById("ago");if(!e)return;'
-    'e.textContent=" \\u00b7 "+(d<=0?"hoje":(d===1?"h\\u00e1 1 dia":"h\\u00e1 "+d+" dias"));'
-    'if(d>=1)e.style.color="#b0564c";})();</script>'
-    '</div>'
-) % (rows, gen.strftime('%-d %b %Y, %H:%M UTC'), gen.strftime('%Y-%m-%dT%H:%M:%SZ'))
+    '<div class="scard">'
+    '<h2>Atraso do cron &middot; 11:00 vs 17:00</h2>'
+    '<div class="legend"><span class="lg a">11:00</span><span class="lg b">17:00</span></div>'
+    '<div id="chart" class="chart">a carregar&hellip;</div>'
+    '<div class="updated" id="updated"></div>'
+    '</div></div>'
+    '<script>' + STATUS_JS + '</script>'
+)
 (SITE / 'status.html').write_text(page(CSS_STATUS, status_body), encoding='utf-8')
 
 print("site built: %d day pages, years %s, revealed up to %s (+ status.html)" % (len(isos), years, TODAY.isoformat()))
