@@ -5,9 +5,9 @@ Only letters whose mapped send_date is <= today are revealed (future ones are no
 written to disk, so they can't be read ahead in the page source). Calendar years are shown
 from 1924 up to the current frontier year. Run daily by the workflow; output deploys to Pages.
 """
-import sys, calendar, shutil, html as H
+import sys, calendar, shutil, html as H, os, json, urllib.request
 from collections import OrderedDict
-from datetime import date
+from datetime import date, datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
@@ -170,6 +170,24 @@ a.navchev:hover .chev{opacity:1;filter:saturate(1.35) brightness(1.05);}
 .money-row .r{font-variant-numeric:tabular-nums;}
 @media(max-width:560px){.card{padding:28px 24px;}}
 """
+CSS_STATUS = CORE + """
+.swrap{max-width:640px;margin:0 auto;padding:54px 18px 70px;}
+.stitle{text-align:center;font-family:'Mea Culpa',cursive;font-weight:400;font-size:48px;color:var(--ink);line-height:1.05;margin:0 0 6px;}
+.ssub{text-align:center;color:var(--muted);font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:34px;}
+.scard{background:var(--card);border-radius:8px;padding:20px 24px;margin-bottom:18px;box-shadow:0 1px 2px rgba(0,0,0,.06);}
+.scard h2{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--card-sub);font-weight:400;margin:0 0 14px;}
+.metric{display:flex;justify-content:space-between;align-items:baseline;padding:4px 0;color:var(--card-ink);font-size:16px;}
+.metric .k{color:var(--card-sub);font-size:14px;}
+.metric b{font-size:18px;}
+.bar{height:8px;border-radius:4px;background:var(--card-rule);overflow:hidden;margin-top:10px;}
+.bar>span{display:block;height:100%;background:var(--card-sub);}
+table.runs{width:100%;border-collapse:collapse;font-size:13px;}
+table.runs td{padding:6px 0;border-bottom:1px solid var(--card-rule);color:var(--card-ink);}
+table.runs tr:last-child td{border-bottom:none;}
+table.runs td.r{text-align:right;font-variant-numeric:tabular-nums;color:var(--card-sub);}
+.ok{color:#5a7d4a;}.bad{color:#b0564c;}
+.gen{text-align:center;color:var(--muted);font-size:12px;font-style:italic;margin-top:26px;}
+"""
 
 def dayfile(i): return "day_%s.html" % i
 def page(css, bodyhtml):
@@ -227,4 +245,82 @@ cal_body = ('<div class="wrap"><div class="title">The Honeywood File</div>'
             '<a href="https://honeywooddaily.substack.com/" target="_blank" rel="noopener">Honeywood Daily</a></div>'
             + body + '</div>')
 (SITE / 'index.html').write_text(page(CSS_CAL, cal_body), encoding='utf-8')
-print("site built: %d day pages, years %s, revealed up to %s" % (len(isos), years, TODAY.isoformat()))
+
+# ---------- status page (operational dashboard; not linked from the archive) ----------
+START_SEND = '2026-06-14'      # keep in sync with send.py: nothing is emailed before this
+CRON_UTC = [(11, 0), (17, 0)]  # keep in sync with honeywood.yml schedule
+
+def _fetch_runs(n=14):
+    """Last n honeywood runs from the public API. Uses GH_TOKEN/GITHUB_TOKEN if present
+    (avoids the shared-IP anon rate limit on runners); returns [] on any failure so the
+    page degrades gracefully rather than breaking the build."""
+    url = ('https://api.github.com/repos/lpduarte/honeywood/actions/workflows/'
+           'honeywood.yml/runs?per_page=%d' % n)
+    req = urllib.request.Request(url, headers={'Accept': 'application/vnd.github+json',
+                                               'User-Agent': 'honeywood-status'})
+    tok = os.environ.get('GH_TOKEN') or os.environ.get('GITHUB_TOKEN')
+    if tok: req.add_header('Authorization', 'Bearer ' + tok)
+    try:
+        with urllib.request.urlopen(req, timeout=15) as r:
+            return json.loads(r.read()).get('workflow_runs', [])
+    except Exception:
+        return []
+
+def _run_row(run):
+    t = datetime.fromisoformat(run['created_at'].replace('Z', '+00:00'))
+    concl = run.get('conclusion') or run.get('status') or '?'
+    mark = '<span class="ok">&#10003;</span>' if concl == 'success' else '<span class="bad" title="%s">&#10007;</span>' % H.escape(concl)
+    day = t.strftime('%-d %b')
+    if run.get('event') == 'schedule':
+        prior = [t.replace(hour=h, minute=m, second=0, microsecond=0) for h, m in CRON_UTC]
+        prior = [s for s in prior if s <= t]
+        if prior:
+            s = max(prior); mins = int((t - s).total_seconds() // 60)
+            d = '%dh%02d' % (mins // 60, mins % 60) if mins >= 60 else '%dm' % mins
+            return '<tr><td>%s</td><td>%s &rarr; %s</td><td class="r">+%s</td><td class="r">%s</td></tr>' % (
+                day, s.strftime('%H:%M'), t.strftime('%H:%M'), d, mark)
+    return '<tr><td>%s</td><td>%s</td><td class="r">&mdash;</td><td class="r">%s</td></tr>' % (
+        day, H.escape(run.get('event', '?')), mark)
+
+sent_days = set()
+try: sent_days = set(json.loads((ROOT / 'data' / 'sent_log.json').read_text()))
+except Exception: pass
+
+total_letters = len([r for r in recs if r.get('send_date')])
+sent_n = len([r for r in recs if r.get('send_date') in sent_days])
+pct = round(100 * len(revealed) / total_letters) if total_letters else 0
+day_marker = TODAY_BOOK   # how far the calendar's day-tracking has advanced (book-space)
+horizon = max(TODAY.isoformat(), START_SEND)
+future = sorted((r for r in recs if r.get('send_date') and r['send_date'] >= horizon
+                 and r['send_date'] not in sent_days), key=lambda r: r['send_date'])
+next_book = future[0]['book_date'] if future else None
+
+rows = ''.join(_run_row(r) for r in _fetch_runs()) or \
+    '<tr><td colspan="4" style="color:var(--muted)">Execu&ccedil;&otilde;es indispon&iacute;veis.</td></tr>'
+sent_txt = ('come&ccedil;a a %s' % fmt_date_en('1924-%s-%s' % (START_SEND[5:7], START_SEND[8:10]))) if sent_n == 0 else '<b>%d</b>' % sent_n
+gen = datetime.now(timezone.utc)
+status_body = (
+    '<div class="swrap">'
+    '<div class="stitle">The Honeywood File</div><div class="ssub">Status</div>'
+    '<div class="scard"><h2>Progresso</h2>'
+    '<div class="metric"><span class="k">Reveladas no arquivo</span><span><b>%d</b> / %d</span></div>'
+    '<div class="bar"><span style="width:%d%%"></span></div>'
+    '<div class="metric" style="margin-top:14px"><span class="k">Enviadas por email</span><span>%s</span></div></div>'
+    '<div class="scard"><h2>Ciclo</h2>'
+    '<div class="metric"><span class="k">Dia atual no calend&aacute;rio</span><span>%s</span></div>'
+    '<div class="metric"><span class="k">Pr&oacute;ximo email</span><span>%s</span></div></div>'
+    '<div class="scard"><h2>Execu&ccedil;&otilde;es &middot; atraso do cron</h2>'
+    '<table class="runs"><tbody>%s</tbody></table></div>'
+    '<div class="gen">Gerado em %s<span id="ago"></span></div>'
+    '<script>(function(){var g=new Date("%s"),n=new Date(),d=Math.floor((n-g)/864e5),'
+    'e=document.getElementById("ago");if(!e)return;'
+    'e.textContent=" \\u00b7 "+(d<=0?"hoje":(d===1?"h\\u00e1 1 dia":"h\\u00e1 "+d+" dias"));'
+    'if(d>=1)e.style.color="#b0564c";})();</script>'
+    '</div>'
+) % (len(revealed), total_letters, pct, sent_txt,
+     fmt_date_en(day_marker),
+     fmt_date_en(next_book) if next_book else '&mdash;',
+     rows, gen.strftime('%-d %b %Y, %H:%M UTC'), gen.strftime('%Y-%m-%dT%H:%M:%SZ'))
+(SITE / 'status.html').write_text(page(CSS_STATUS, status_body), encoding='utf-8')
+
+print("site built: %d day pages, years %s, revealed up to %s (+ status.html)" % (len(isos), years, TODAY.isoformat()))
