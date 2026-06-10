@@ -261,6 +261,8 @@ cal_body = ('<div class="wrap"><div class="title">The Honeywood File</div>'
 # (public repo) — the rate limit is the visitor's own IP. Degrades to a message on failure.
 # One chart, two lines (the 11:00 and 17:00 cron slots) sharing a date X-axis, so a slot
 # that started later simply begins partway across; Y is the delay vs the scheduled time.
+# The cron is a Cloudflare Cron Trigger dispatching the workflow (event=workflow_dispatch);
+# runs from the retired GitHub cron (event=schedule) still feed the chart's history.
 STATUS_JS = """
 (function(){
   var REPO='lpduarte/honeywood', DAYS=30, SLOTS=[11,17], DAYMS=864e5;
@@ -284,8 +286,12 @@ STATUS_JS = """
     var now=new Date(), today=Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate());
     var minDay=today-(DAYS-1)*DAYMS, pts={11:{},17:{}};
     runs.forEach(function(run){
-      if(run.event!=='schedule') return;
+      // 'schedule' is the retired GitHub cron (delays of hours were normal);
+      // 'workflow_dispatch' is the Cloudflare cron, which lands minutes after the
+      // slot — anything later is a manual dispatch, not the cron, so it is skipped.
+      if(run.event!=='schedule' && run.event!=='workflow_dispatch') return;
       var x=slotOf(run); if(!x||x.day<minDay) return;
+      if(run.event==='workflow_dispatch' && x.mins>60) return;
       if(pts[x.slot][x.day]===undefined) pts[x.slot][x.day]=x.mins;  // newest-first: keep latest per day/slot
     });
     var days=[]; [11,17].forEach(function(s){ for(var k in pts[s]) days.push(+k); });

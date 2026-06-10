@@ -1,13 +1,21 @@
-# Cloudflare Worker for one-click unsubscribe. Deploy with:
+# Cloudflare Worker: one-click unsubscribe + the project's cron. Deploy with:
 #   cd worker
-#   npx wrangler login                 # opens the browser to authorize (one time)
-#   npx wrangler secret put GIST_ID    # paste the private gist id
-#   npx wrangler secret put GIST_TOKEN # paste the classic PAT (gist scope)
-#   npx wrangler deploy                # prints the https://<name>.<subdomain>.workers.dev URL
+#   npx wrangler login                        # opens the browser to authorize (one time)
+#   npx wrangler secret put GIST_ID           # paste the private gist id
+#   npx wrangler secret put GIST_TOKEN        # paste the classic PAT (gist scope)
+#   npx wrangler secret put GH_DISPATCH_TOKEN # paste the fine-grained PAT (Actions: rw)
+#   npx wrangler deploy                       # prints the https://<name>.<subdomain>.workers.dev URL
 # Put that URL in the repo variable HONEYWOOD_UNSUB_BASE so the emails point at it.
 #
-# GIST_ID and GIST_TOKEN are set as secrets (via the commands above), never here —
-# this file is committed to a public repo.
+# Secrets are set via the commands above, never here — this file is committed to a
+# public repo.
 name = "honeywood-unsub"
 main = "worker.js"
 compatibility_date = "2025-06-01"
+
+# The daily trigger lives HERE, not in GitHub's `on: schedule` — Cloudflare fires
+# within seconds; GitHub's schedule queue ran 1–5 h late. Each fire dispatches the
+# honeywood.yml workflow (see `scheduled` in worker.js). Two slots a day: 17:00 is
+# the safety net (send.py --catchup makes a repeat run a no-op).
+[triggers]
+crons = ["0 11 * * *", "0 17 * * *"]

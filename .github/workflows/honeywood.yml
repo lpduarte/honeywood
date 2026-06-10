@@ -1,13 +1,11 @@
 name: Honeywood daily letter
 
+# The daily trigger is a Cloudflare Cron Trigger (worker/wrangler.toml) firing
+# workflow_dispatch at 11:00 and 17:00 UTC — Cloudflare starts within seconds,
+# where GitHub's own `on: schedule` queue ran 1–5 h late and sometimes skipped.
+# 17:00 is the safety net: --catchup is idempotent (sent_log prevents resends),
+# so a repeated or late run recovers the day instead of double-sending.
 on:
-  schedule:
-    # 11:00 UTC ≈ 12:00 Lisbon in summer (WEST); 11:00 in winter (WET).
-    # A second run at 17:00 UTC is a safety net: GitHub's scheduler is best-effort
-    # and may skip a run. --catchup is idempotent (sent_log prevents resends), so a
-    # later run recovers the same day instead of leaving it for tomorrow's cron.
-    - cron: '0 11 * * *'
-    - cron: '0 17 * * *'
   workflow_dispatch:
     inputs:
       date:
