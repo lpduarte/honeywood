@@ -10,9 +10,16 @@
 // workflow reads. We identify the recipient by an unguessable per-person token,
 // never by email, so no address ever appears in a URL.
 //
+// The Worker is also the project's cron: Cloudflare Cron Triggers (see wrangler.toml)
+// fire `scheduled` at 11:00 and 17:00 UTC, which dispatches the GitHub workflow via
+// workflow_dispatch. GitHub's own `schedule` queue is best-effort (1–5 h late at busy
+// hours); dispatched runs start in seconds, so the letters go out on time.
+//
 // Config (set on the Worker):
-//   GIST_ID     (secret) the private gist id
-//   GIST_TOKEN  (secret) a classic PAT with the `gist` scope (read + write)
+//   GIST_ID           (secret) the private gist id
+//   GIST_TOKEN        (secret) a classic PAT with the `gist` scope (read + write)
+//   GH_DISPATCH_TOKEN (secret) a fine-grained PAT, repo lpduarte/honeywood only,
+//                     Actions: read & write — just enough to dispatch the workflow
 //
 // The pages mirror the archive site (lpduarte.github.io/honeywood): EB Garamond +
 // Mea Culpa title, paper/pattern background, card, light+dark. Assets are reused
@@ -21,6 +28,8 @@
 const GIST_API = 'https://api.github.com/gists/';
 const FILE = 'honeywood_recipients.json';
 const PAGES = 'https://lpduarte.github.io/honeywood';
+const DISPATCH_API =
+  'https://api.github.com/repos/lpduarte/honeywood/actions/workflows/honeywood.yml/dispatches';
 
 export default {
   async fetch(request, env) {
@@ -30,6 +39,25 @@ export default {
     if (request.method === 'GET') return new Response(confirmHTML(token), htmlInit());
     if (request.method === 'POST') return doUnsub(token, env);
     return new Response('Method not allowed', { status: 405 });
+  },
+
+  // Cron Trigger (11:00 / 17:00 UTC): start the daily workflow. No payload beyond the
+  // ref — the workflow's --catchup picks the day, so a late or repeated fire is safe.
+  // A throw marks the invocation failed in the Cloudflare dashboard (the only signal
+  // we get); GitHub-side failures still open an alert issue from the workflow itself.
+  async scheduled(event, env) {
+    const r = await fetch(DISPATCH_API, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${env.GH_DISPATCH_TOKEN}`,
+        'Accept': 'application/vnd.github+json',
+        'X-GitHub-Api-Version': '2022-11-28',
+        'User-Agent': 'honeywood-cron',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ ref: 'main' }),
+    });
+    if (r.status !== 204) throw new Error(`dispatch failed: ${r.status} ${await r.text()}`);
   },
 };
 
