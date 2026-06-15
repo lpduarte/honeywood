@@ -9,8 +9,12 @@
 Needs RECIPIENTS_GIST_ID + RECIPIENTS_GIST_TOKEN (env or repo-root .env).
 The gist is the single source of truth; this just edits it safely (read-modify-write)."""
 from __future__ import annotations
-import sys, os, secrets
+import sys, os, re, secrets
 from pathlib import Path
+
+# Basic shape check, so a stray CLI flag or typo (e.g. "--help") can never be saved
+# as a recipient. Deliberately permissive — one @, no spaces, a dotted domain.
+EMAIL_RE = re.compile(r'^[^@\s]+@[^@\s]+\.[^@\s]+$')
 
 import recipients as R
 
@@ -42,6 +46,8 @@ def cmd_add(recs, emails):
     for e in emails:
         key = e.strip().lower()
         if not key: continue
+        if not EMAIL_RE.match(key):
+            print(f"  skipped (not an email): {e}", file=sys.stderr); continue
         r = by_email.get(key)
         if r:
             r['status'] = 'active'
