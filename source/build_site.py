@@ -136,6 +136,7 @@ a.day.has:hover .num{opacity:0;}
 CSS_READ = CORE + """
 .col{width:700px;max-width:100%;margin:0 auto;padding:40px 16px 64px;}
 .nav{display:flex;align-items:center;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid var(--rule);}
+.nav--foot{padding-bottom:0;padding-top:16px;border-bottom:none;border-top:1px solid var(--rule);margin-top:48px;}
 .nav a.back{font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);text-decoration:none;}
 .nav a.back:hover{color:var(--ink);}
 .navchev{position:relative;display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center;text-decoration:none;}
@@ -215,10 +216,14 @@ for iso, letters in bydate.items():
     nxt = isos[i + 1] if i < len(isos) - 1 else None   # capped at latest revealed -> only-back
     pv = ('<a class="navchev" href="%s" aria-label="previous"><img class="chev" src="prev.png" alt="previous"><img class="navring" src="ring.png" alt=""></a>' % dayfile(prev)) if prev else '<span class="navchev"><img class="chev off" src="prev.png" alt=""></span>'
     nx = ('<a class="navchev" href="%s" aria-label="next"><img class="chev" src="next.png" alt="next"><img class="navring" src="ring.png" alt=""></a>' % dayfile(nxt)) if nxt else '<span class="navchev"><img class="chev off" src="next.png" alt=""></span>'
-    nav = '<div class="nav">' + pv + '<a class="back" href="index.html#y%s">Back to calendar</a>' % yr + nx + '</div>'
+    navinner = pv + '<a class="back" href="index.html#y%s">Back to calendar</a>' % yr + nx
+    nav = '<div class="nav">' + navinner + '</div>'
+    # Repeat the nav at the foot so the reader can move on without scrolling back up
+    # (the page gets long on mobile); rule sits on top so it reads as a footer.
+    navfoot = '<div class="nav nav--foot">' + navinner + '</div>'
     head = '<div class="head"><div class="bookname">The Honeywood File</div><div class="date">%s</div></div>' % fmt_date_en(iso)
     cards = ''.join(card_html(r) for r in letters)
-    (SITE / dayfile(iso)).write_text(page(CSS_READ, '<div class="col">' + nav + head + cards + '</div>'), encoding='utf-8')
+    (SITE / dayfile(iso)).write_text(page(CSS_READ, '<div class="col">' + nav + head + cards + navfoot + '</div>'), encoding='utf-8')
 
 WD = ['M', 'T', 'W', 'T', 'F', 'S', 'S']
 def mini(y, m):
