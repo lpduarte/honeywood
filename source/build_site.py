@@ -37,12 +37,28 @@ all_letterdays = {tuple(map(int, r['book_date'].split('-'))) for r in recs if r.
 years = [1924, 1925, 1926]   # full calendar; not-yet-sent days show as pending (ring only)
 
 # ---------- web letter card ----------
+import re
+# A tender schedule is encoded in the body as a run of lines "Builder — £amount · time"
+# (the only such table in the corpus, L032-0). Render it as an aligned 3-column table
+# rather than a justified paragraph. No invented headers — the book has none.
+_TROW = re.compile(r'^(.+?) — (.+?) · (.+)$')
+def _table_html(p):
+    lines = [l for l in p.split('\n') if l.strip()]
+    if len(lines) < 2:
+        return None
+    rows = [_TROW.match(l) for l in lines]
+    if not all(rows):
+        return None
+    cells = ''.join(
+        '<tr><td class="b">%s</td><td class="a">%s</td><td class="t">%s</td></tr>'
+        % (esc(m.group(1)), esc(m.group(2)), esc(m.group(3))) for m in rows)
+    return '<table class="tt"><tbody>%s</tbody></table>' % cells
+
 def card_html(rec):
     sal, para, closing = split_salutation_closing(rec['body'])
     def ph(p): return esc(p.strip()).replace('\n', '<br>')
-    import re
     paras = [p for p in re.split(r'\n{2,}', para) if p.strip()]
-    body_html = ''.join('<p class="body">%s</p>' % ph(p) for p in paras)
+    body_html = ''.join(_table_html(p) or '<p class="body">%s</p>' % ph(p) for p in paras)
     role = rec.get('from_role'); to_role = rec.get('to_role')
     role_html = '<div class="role">%s</div>' % esc(role) if role else ''
     to_line = esc(rec['to']) + (', %s' % esc(to_role) if to_role else '')
@@ -161,6 +177,11 @@ a.navchev:hover .chev{opacity:1;filter:saturate(1.35) brightness(1.05);}
 .subject{font-size:13px;letter-spacing:1px;text-transform:uppercase;font-style:italic;color:var(--card-sub);margin-bottom:14px;}
 .sal{font-size:19px;color:var(--card-ink);margin-bottom:12px;}
 .body{font-size:19px;line-height:1.72;color:var(--card-ink);text-align:justify;margin:0 0 16px;}
+.tt{width:100%;border-collapse:collapse;font-size:18px;color:var(--card-ink);margin:0 0 16px;}
+.tt td{padding:7px 0;border-bottom:1px solid var(--card-rule);vertical-align:baseline;}
+.tt tr:last-child td{border-bottom:none;}
+.tt .a{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;padding-left:22px;}
+.tt .t{text-align:right;color:var(--card-sub);white-space:nowrap;padding-left:22px;}
 .closing{font-size:19px;font-style:italic;color:var(--card-ink);margin-top:16px;}
 .note{border-top:1px dashed var(--card-rule);margin-top:30px;padding-top:18px;}
 .note-h{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--note-label);margin-bottom:9px;}
