@@ -40,6 +40,28 @@ def fmt_date_en(iso):
 
 def esc(s): return html.escape(s)
 
+# A tender schedule is encoded in the body as a run of lines "Builder — £amount · time"
+# (the only such table in the corpus, L032-0). Render it as an aligned 3-column table,
+# email-safe (a real <table>, inline styles, no <style> dependency). No invented headers.
+_TROW = re.compile(r'^(.+?) — (.+?) · (.+)$')
+def _email_table(p):
+    lines = [l for l in p.split('\n') if l.strip()]
+    if len(lines) < 2:
+        return None
+    rows = [_TROW.match(l) for l in lines]
+    if not all(rows):
+        return None
+    cells = ''
+    for i, m in enumerate(rows):
+        bb = '' if i == len(rows) - 1 else 'border-bottom:1px solid #ddd2b8;'
+        base = f'font-family:{FONT};font-size:17px;padding:7px 0;{bb}'
+        cells += (
+          f'<tr><td style="{base}color:#2b2620;">{esc(m.group(1))}</td>'
+          f'<td align="right" style="{base}color:#2b2620;padding-left:18px;white-space:nowrap;">{esc(m.group(2))}</td>'
+          f'<td align="right" style="{base}color:#8a7c5e;padding-left:18px;white-space:nowrap;">{esc(m.group(3))}</td></tr>')
+    return (f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" '
+            f'style="margin:4px 0 13px;{TSA}">{cells}</table>')
+
 def split_salutation_closing(body):
     b = body.strip(); sal = ''
     m = re.match(r'^(Dear[^,\n]*,|Sirs,|Sir,|Madam,)\s*', b)
@@ -55,8 +77,9 @@ def sheet(rec, tail=''):
     def ph(p): return esc(p.strip()).replace('\n', '<br>')
     paras = [p for p in re.split(r'\n{2,}', para) if p.strip()]
     body_html = ''.join(
-        f'<p class="para" style="font-family:{FONT};font-size:17.5px;line-height:1.62;'
-        f'margin:0 0 13px;color:#2b2620;text-align:justify;">{ph(p)}</p>' for p in paras)
+        _email_table(p) or
+        (f'<p class="para" style="font-family:{FONT};font-size:17.5px;line-height:1.62;'
+         f'margin:0 0 13px;color:#2b2620;text-align:justify;">{ph(p)}</p>') for p in paras)
 
     from_role = rec.get('from_role'); to_role = rec.get('to_role')
     role_html = (f'<div style="font-family:{FONT};font-size:14.5px;font-style:italic;'
