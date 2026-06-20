@@ -9,7 +9,11 @@ import re, math
 INFL = {1924: 80.0, 1925: 80.0, 1926: 81.0}   # GBP cumulative to ~2026 (approx)
 FX = 1.16                                       # GBP -> EUR (approx)
 
-_AMT = re.compile(r'£\s?([\d,]+)(?:\s*(\d+)\s*s\.)?(?:\s*(\d+)\s*d\.)?')
+_AMT = re.compile(
+    r'£\s?([\d,]+)(?:\s*(\d+)\s*s\.)?(?:\s*(\d+)\s*d\.)?'   # £ amount (+ optional s./d.)
+    r'|(\d+)\s*s\.(?:\s*(\d+)\s*d\.)?'                      # bare shillings (+ optional pence)
+    r'|(\d+)\s*d\.'                                          # bare pence
+)
 
 
 def euro(v):
@@ -29,9 +33,18 @@ def rows(body, year):
         if label in seen:
             continue
         seen.add(label)
-        p = int(m.group(1).replace(',', ''))
-        s = int(m.group(2)) if m.group(2) else 0
-        d = int(m.group(3)) if m.group(3) else 0
+        if m.group(1) is not None:                  # £ amount
+            p = int(m.group(1).replace(',', ''))
+            s = int(m.group(2)) if m.group(2) else 0
+            d = int(m.group(3)) if m.group(3) else 0
+        elif m.group(4) is not None:                # bare shillings (+ pence)
+            p = 0
+            s = int(m.group(4))
+            d = int(m.group(5)) if m.group(5) else 0
+        else:                                        # bare pence
+            p = 0
+            s = 0
+            d = int(m.group(6))
         pounds = p + s / 20 + d / 240
         out.append((label, euro(pounds * INFL.get(year, 80.0) * FX)))
     return out
