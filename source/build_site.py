@@ -54,9 +54,13 @@ def _table_html(p):
         % (esc(m.group(1)), esc(m.group(2)), esc(m.group(3))) for m in rows)
     return '<table class="tt"><tbody>%s</tbody></table>' % cells
 
+# Creswell's editorial asides are inserted into the letters in square brackets and set
+# in italic in the book ("[sic]", "[Bravo!]", technical explanations). Reproduce the italic.
+def _ital_brackets(s): return re.sub(r'(\[[^\]]*\])', r'<i>\1</i>', s)
+
 def card_html(rec):
     sal, para, closing = split_salutation_closing(rec['body'])
-    def ph(p): return esc(p.strip()).replace('\n', '<br>')
+    def ph(p): return _ital_brackets(esc(p.strip()).replace('\n', '<br>'))
     paras = [p for p in re.split(r'\n{2,}', para) if p.strip()]
     body_html = ''.join(_table_html(p) or '<p class="body">%s</p>' % ph(p) for p in paras)
     role = rec.get('from_role'); to_role = rec.get('to_role')
