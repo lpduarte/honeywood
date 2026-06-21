@@ -4703,5 +4703,53 @@
    }
   ],
   "skipped": []
+ },
+ {
+  "source": "WORD review C/D vs 1945 scan (EPUB unreliable) — 2026-06-22",
+  "applied": [
+   {
+    "id": "L068-0",
+    "field": "body",
+    "from": "a graduation of tone",
+    "to": "a gradation of tone",
+    "note": "p68"
+   },
+   {
+    "id": "L085-0",
+    "field": "commentary",
+    "from": "will acquire a kingly",
+    "to": "will require a kingly",
+    "note": "p85"
+   },
+   {
+    "id": "L080-2",
+    "field": "commentary",
+    "from": "the Arbitrator.",
+    "to": "the Harshtec.",
+    "note": "OCR bruto: alcunha \"Harshtec\""
+   },
+   {
+    "id": "L141-0",
+    "field": "body",
+    "from": "furnace, fifty clay pipes",
+    "to": "furnace, two clay pipes",
+    "note": "p142"
+   },
+   {
+    "id": "L099-0x",
+    "field": "body",
+    "from": "you barging in for",
+    "to": "you bargin in for",
+    "note": "p99 (dialeto Bloggs)"
+   },
+   {
+    "id": "L099-0x",
+    "field": "body",
+    "from": "admit we had a few words",
+    "to": "admit we add a few words",
+    "note": "OCR bruto (dialeto Bloggs)"
+   }
+  ],
+  "skipped": []
  }
 ]
