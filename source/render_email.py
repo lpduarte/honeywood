@@ -125,6 +125,16 @@ def sheet(rec, tail=''):
           f'text-transform:uppercase;color:#b0a282;padding-bottom:8px;">In today\'s money</div>'
           f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0">{rr}</table></div>')
 
+    # An enclosure travels inside its covering letter, so it is delivered on the covering
+    # letter's day — its own (earlier) date would otherwise be lost. Mark it and show that
+    # date so the reader sees it was written before the letter that forwards it.
+    encl_html = ''
+    if rec.get('enclosure'):
+        encl_html = (
+          f'<div style="font-family:{FONT};font-size:13px;letter-spacing:1px;text-transform:uppercase;'
+          f'color:#a8997a;padding-top:6px;">Enclosure &middot; <span style="text-transform:none;'
+          f'letter-spacing:0;font-style:italic;">{esc(fmt_date_en(rec["book_date"]))}</span></div>')
+
     # Chapter title sits INSIDE the opening card (same dark-mode reasoning as the
     # footer): centred above the sender, set off by a full-width rule.
     chapter_html = ''
@@ -143,6 +153,7 @@ def sheet(rec, tail=''):
       f'<div style="font-family:{FONT};font-size:22px;font-weight:bold;color:#2b2620;line-height:1.2;">{esc(rec["from"])}</div>'
       f'{role_html}'
       f'<div style="font-family:{FONT};font-size:14.5px;font-weight:bold;color:#2b2620;padding-top:7px;">to {to_line}</div>'
+      f'{encl_html}'
       f'<div style="border-bottom:1px solid #ddd2b8;font-size:0;line-height:0;margin:15px 0;">&nbsp;</div>'
       f'{subject_html}{sal_html}{body_html}{closing_html}{note_html}{money_html}{tail}'
       f'</td></tr></table></td></tr>')

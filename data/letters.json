@@ -627,7 +627,7 @@
   "page": 21,
   "kind": "enclosure",
   "book_date": "1924-04-15",
-  "send_date": "2026-04-15",
+  "send_date": "2026-04-16",
   "from_key": "GEORGE BRANBLE, COWKEEPER,",
   "from": "George Bramble",
   "from_role": "Cowkeeper",
@@ -642,7 +642,8 @@
   "body_chars": 1025,
   "needs_date": false,
   "chapter": "Catastrophe of the Trial Holes",
-  "chapter_start": false
+  "chapter_start": false,
+  "enclosure": true
  },
  {
   "id": "L021-2x",
@@ -1825,7 +1826,7 @@
   "page": 42,
   "kind": "enclosure",
   "book_date": "1924-08-26",
-  "send_date": "2026-08-26",
+  "send_date": "2026-08-27",
   "from_key": "BLOGGS",
   "from": "Bloggs",
   "from_role": null,
@@ -1840,7 +1841,8 @@
   "body_chars": 254,
   "needs_date": false,
   "chapter": "Grigblay and Brash Get to Work",
-  "chapter_start": false
+  "chapter_start": false,
+  "enclosure": true
  },
  {
   "id": "L043-0",
@@ -2524,7 +2526,7 @@
   "page": 53,
   "kind": "letter",
   "book_date": "1924-10-10",
-  "send_date": "2026-10-10",
+  "send_date": "2026-10-13",
   "from_key": "SPOONBILL & WELLSTAFT",
   "from": "Spoonbill & Wellstaft",
   "from_role": "Solicitors",
@@ -2539,7 +2541,8 @@
   "body_chars": 1233,
   "needs_date": false,
   "chapter": "The Affair of the Spring",
-  "chapter_start": false
+  "chapter_start": false,
+  "enclosure": true
  },
  {
   "id": "L053-1",
@@ -3102,7 +3105,7 @@
   "page": 62,
   "kind": "enclosure",
   "book_date": "1924-11-08",
-  "send_date": "2026-11-08",
+  "send_date": "2026-11-12",
   "from_key": "HOOCHKOFT",
   "from": "Hoochkoft",
   "from_role": null,
@@ -3117,7 +3120,8 @@
   "body_chars": 237,
   "needs_date": false,
   "chapter": "More Difficulties",
-  "chapter_start": false
+  "chapter_start": false,
+  "enclosure": true
  },
  {
   "id": "L062-2",
@@ -5248,7 +5252,7 @@
   "page": 98,
   "kind": "enclosure",
   "book_date": "1925-06-16",
-  "send_date": "2027-06-16",
+  "send_date": "2027-06-17",
   "from_key": "GRIGBLAY",
   "from": "Grigblay",
   "from_role": null,
@@ -5263,7 +5267,8 @@
   "body_chars": 508,
   "needs_date": false,
   "chapter": "The Last of the Spring",
-  "chapter_start": false
+  "chapter_start": false,
+  "enclosure": true
  },
  {
   "id": "L098-2",
@@ -5317,7 +5322,7 @@
   "page": 99,
   "kind": "enclosure",
   "book_date": "1925-06-21",
-  "send_date": "2027-06-21",
+  "send_date": "2027-06-22",
   "from_key": "BLOGGS",
   "from": "Bloggs",
   "from_role": null,
@@ -5333,7 +5338,8 @@
   "needs_date": false,
   "chapter": "The Last of the Spring",
   "extra": true,
-  "chapter_start": false
+  "chapter_start": false,
+  "enclosure": true
  },
  {
   "id": "L100-0",
