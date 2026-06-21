@@ -4582,5 +4582,17 @@
    }
   ],
   "skipped": []
+ },
+ {
+  "source": "EPUB cross-check + 1945 scan (p100) — OCR read \"¼\" as \"1\" (2026-06-21)",
+  "applied": [
+   {
+    "id": "L100-0",
+    "field": "body",
+    "from": "vary 1 in. each way",
+    "to": "vary ¼ in. each way"
+   }
+  ],
+  "skipped": []
  }
 ]
