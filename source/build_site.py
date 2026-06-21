@@ -77,12 +77,16 @@ def card_html(rec):
     if mrows:
         rr = ''.join('<div class="money-row"><span class="l">%s</span><span class="r">%s</span></div>' % (esc(l), e) for l, e in mrows)
         money_html = '<div class="money"><div class="money-h">In today’s money</div>%s</div>' % rr
+    # An enclosure is delivered on its covering letter's day; show its own (earlier) date.
+    encl_html = ''
+    if rec.get('enclosure'):
+        encl_html = '<div class="encl">Enclosure &middot; <i>%s</i></div>' % esc(fmt_date_en(rec['book_date']))
     chap = ''
     if rec.get('chapter_start') and rec.get('chapter'):
         chap = '<div class="chapter"><span class="dash"></span>%s</div>' % esc(rec['chapter'])
-    return (chap + '<div class="card"><div class="from">%s</div>%s<div class="to">to %s</div>'
+    return (chap + '<div class="card"><div class="from">%s</div>%s<div class="to">to %s</div>%s'
             '<div class="crule"></div>%s%s%s%s%s%s</div>'
-            % (esc(rec['from']), role_html, to_line, subj, sal_html, body_html, clo_html, note_html, money_html))
+            % (esc(rec['from']), role_html, to_line, encl_html, subj, sal_html, body_html, clo_html, note_html, money_html))
 
 # ---------- chrome ----------
 MOON = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M14 2a10 10 0 1 0 8 16A8 8 0 0 1 14 2z" fill="currentColor"/></svg>'
@@ -177,6 +181,8 @@ a.navchev:hover .chev{opacity:1;filter:saturate(1.35) brightness(1.05);}
 .from{font-size:25px;font-weight:700;color:var(--card-ink);line-height:1.15;}
 .role{font-size:14px;font-style:italic;color:var(--card-sub);margin-top:3px;}
 .to{font-size:15px;color:var(--card-sub);margin-top:8px;}
+.encl{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--note-label);margin-top:7px;}
+.encl i{text-transform:none;letter-spacing:0;font-size:14px;}
 .crule{border-bottom:1px solid var(--card-rule);margin:18px 0;}
 .subject{font-size:13px;letter-spacing:1px;text-transform:uppercase;font-style:italic;color:var(--card-sub);margin-bottom:14px;}
 .sal{font-size:19px;color:var(--card-ink);margin-bottom:12px;}
