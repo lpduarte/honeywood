@@ -4564,5 +4564,23 @@
    }
   ],
   "skipped": []
+ },
+ {
+  "source": "EPUB cross-check (Academy Chicago 2012) — L146-0 date; 1945 print \"21\" is a misprint, confirmed by reading-order + narrative + weekday (2026-06-21)",
+  "applied": [
+   {
+    "id": "L146-0",
+    "field": "book_date",
+    "from": "1925-11-21",
+    "to": "1925-11-24"
+   },
+   {
+    "id": "L146-0",
+    "field": "send_date",
+    "from": "2027-11-21",
+    "to": "2027-11-24"
+   }
+  ],
+  "skipped": []
  }
 ]
