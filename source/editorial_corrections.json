@@ -4683,5 +4683,25 @@
    }
   ],
   "skipped": []
+ },
+ {
+  "source": "OCR re-verify: corrige duas leituras minhas erradas, confirmadas visualmente pelo utilizador (2026-06-21)",
+  "applied": [
+   {
+    "id": "L161-0",
+    "field": "commentary",
+    "from": "only ⅓ inch",
+    "to": "only ½ inch",
+    "note": "½ não ⅓ (validado visualmente; eu li mal)"
+   },
+   {
+    "id": "L078-0x",
+    "field": "body",
+    "from": "45. L.J.C.P.",
+    "to": "45. L.I.C. P.",
+    "note": "L.I.C. P. não L.J.C.P. (validado visualmente; eu li mal)"
+   }
+  ],
+  "skipped": []
  }
 ]
