@@ -4486,5 +4486,83 @@
     "to": "None"
    }
   ]
+ },
+ {
+  "source": "EPUB cross-check (Academy Chicago 2012) — date OCR fixes confirmed in review UI (2026-06-20)",
+  "applied": [
+   {
+    "id": "L031-1",
+    "field": "book_date",
+    "from": "1924-07-10",
+    "to": "1924-07-19"
+   },
+   {
+    "id": "L031-1",
+    "field": "send_date",
+    "from": "2026-07-10",
+    "to": "2026-07-19"
+   },
+   {
+    "id": "L070-1",
+    "field": "book_date",
+    "from": "1924-12-21",
+    "to": "1924-12-24"
+   },
+   {
+    "id": "L070-1",
+    "field": "send_date",
+    "from": "2026-12-21",
+    "to": "2026-12-24"
+   },
+   {
+    "id": "L093-1",
+    "field": "book_date",
+    "from": "1925-05-10",
+    "to": "1925-05-16"
+   },
+   {
+    "id": "L093-1",
+    "field": "send_date",
+    "from": "2027-05-10",
+    "to": "2027-05-16"
+   },
+   {
+    "id": "L123-2",
+    "field": "book_date",
+    "from": "1925-09-08",
+    "to": "1925-09-07"
+   },
+   {
+    "id": "L123-2",
+    "field": "send_date",
+    "from": "2027-09-08",
+    "to": "2027-09-07"
+   },
+   {
+    "id": "L136-1",
+    "field": "book_date",
+    "from": "1925-10-31",
+    "to": "1925-10-30"
+   },
+   {
+    "id": "L136-1",
+    "field": "send_date",
+    "from": "2027-10-31",
+    "to": "2027-10-30"
+   },
+   {
+    "id": "L159-0",
+    "field": "book_date",
+    "from": "1926-01-01",
+    "to": "1926-01-04"
+   },
+   {
+    "id": "L159-0",
+    "field": "send_date",
+    "from": "2028-01-01",
+    "to": "2028-01-04"
+   }
+  ],
+  "skipped": []
  }
 ]

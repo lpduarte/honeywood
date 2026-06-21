@@ -35,3 +35,6 @@ __pycache__/
 
 # macOS
 .DS_Store
+
+# Reference EPUB (copyrighted US edition) + derived text/images — never commit
+reference/
