@@ -4628,5 +4628,60 @@
    }
   ],
   "skipped": []
+ },
+ {
+  "source": "OCR? review vs 1945 scan (EPUB not authoritative) — 2026-06-21",
+  "applied": [
+   {
+    "id": "L059-0",
+    "field": "body",
+    "from": "rebuild it to the 14 in.",
+    "to": "build 1 ft. 10½ in.",
+    "note": "OCR garble->dimensão (p59); comentário \"14 in.\" é inconsist. do livro, fica"
+   },
+   {
+    "id": "L078-0x",
+    "field": "body",
+    "from": "Blackburn; Ewing",
+    "to": "Blackburn. Orr-Ewing",
+    "note": "dropped \"Orr-\" (p78)"
+   },
+   {
+    "id": "L078-0x",
+    "field": "body",
+    "from": "392; 15. L.J.C.P.",
+    "to": "392; 45. L.J.C.P.",
+    "note": "15->45 (p79); nosso L.J.C.P. está certo (EPUB tinha L.I.C.)"
+   },
+   {
+    "id": "L099-0x",
+    "field": "body",
+    "from": "of tact.",
+    "to": "of tack.",
+    "note": "Bloggs malapropism (p99); aspas/grafia polidas ficam por rever"
+   },
+   {
+    "id": "L102-0",
+    "field": "body",
+    "from": "into “ests”",
+    "to": "into eats",
+    "note": "ests->eats, aspas espúrias removidas (p102)"
+   },
+   {
+    "id": "L114-2",
+    "field": "body",
+    "from": "3-and-1",
+    "to": "3 and 1",
+    "note": "hífenes->espaços (p115); EPUB tinha \"I\""
+   },
+   {
+    "id": "L161-0",
+    "field": "commentary",
+    "from": "only 1 inch on",
+    "to": "only ⅓ inch on",
+    "note": "1->⅓ (p161); EPUB tinha ½"
+   }
+  ],
+  "skipped": []
  }
 ]
