@@ -4594,5 +4594,39 @@
    }
   ],
   "skipped": []
+ },
+ {
+  "source": "EPUB cross-check + 1945 scan, NUM figures verified in review (2026-06-21)",
+  "applied": [
+   {
+    "id": "L084-2",
+    "field": "body",
+    "from": "their estimate of £155 greatly",
+    "to": "their estimate of £525 greatly",
+    "note": "£155->£525 (p85)"
+   },
+   {
+    "id": "L146-2",
+    "field": "body",
+    "from": "to about 15 in. from the ceiling",
+    "to": "to about 18 in. from the ceiling",
+    "note": "15->18 (p147; EPUB had wrong 10)"
+   },
+   {
+    "id": "L161-0",
+    "field": "commentary",
+    "from": "floor area of 115 ft.",
+    "to": "floor area of 11⅔ ft.",
+    "note": "115->11⅔ (p161)"
+   },
+   {
+    "id": "L162-1x",
+    "field": "body",
+    "from": "her pretty self? 1 in. wide",
+    "to": "her pretty self? ½ in. wide",
+    "note": "1->½ (p163)"
+   }
+  ],
+  "skipped": []
  }
 ]
