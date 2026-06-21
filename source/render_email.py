@@ -72,9 +72,12 @@ def split_salutation_closing(body):
     if cm: closing = cm.group(1); b = b[:cm.start()].strip()
     return sal, b.strip(), closing
 
+# Creswell's bracketed editorial asides are italic in the book — reproduce that inline.
+def _ital_brackets(s): return re.sub(r'(\[[^\]]*\])', r'<i>\1</i>', s)
+
 def sheet(rec, tail=''):
     sal, para, closing = split_salutation_closing(rec['body'])
-    def ph(p): return esc(p.strip()).replace('\n', '<br>')
+    def ph(p): return _ital_brackets(esc(p.strip()).replace('\n', '<br>'))
     paras = [p for p in re.split(r'\n{2,}', para) if p.strip()]
     body_html = ''.join(
         _email_table(p) or
