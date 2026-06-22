@@ -4792,5 +4792,21 @@
    }
   ],
   "skipped": []
+ },
+ {
+  "source": "WORD review F — 2 blocos reais vs scan (drop + reordenação); 2026-06-22",
+  "applied": [
+   {
+    "id": "L050-2",
+    "field": "body",
+    "note": "frase largada \"parcel não selado\" (p50)"
+   },
+   {
+    "id": "L139-1",
+    "field": "body",
+    "note": "ordem das frases baralhada pelo OCR — reposta (p139)"
+   }
+  ],
+  "skipped": []
  }
 ]
