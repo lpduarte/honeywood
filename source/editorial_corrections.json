@@ -4751,5 +4751,46 @@
    }
   ],
   "skipped": []
+ },
+ {
+  "source": "WORD review E — restaurar omissões do OCR (marcações/fechos/asides), verificadas no scan; 2026-06-22 (marcações revertidas — já existiam no subject)",
+  "applied": [
+   {
+    "id": "L020-1",
+    "field": "body",
+    "add": "Awaiting further esteemed favours,"
+   },
+   {
+    "id": "L030-1",
+    "field": "body",
+    "add": "Yours sincerely,"
+   },
+   {
+    "id": "L111-1",
+    "field": "body",
+    "add": "[Ahem!]"
+   },
+   {
+    "id": "L118-0",
+    "field": "body",
+    "add": "How chilly the wind has been!"
+   },
+   {
+    "id": "L039-1",
+    "field": "body",
+    "add": "inverted"
+   },
+   {
+    "id": "L153-0",
+    "field": "commentary",
+    "add": "Here is a return to sanity!"
+   },
+   {
+    "id": "L126-2y",
+    "field": "commentary",
+    "add": "Silly old man!"
+   }
+  ],
+  "skipped": []
  }
 ]
