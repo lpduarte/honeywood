@@ -4819,5 +4819,14 @@
    }
   ],
   "skipped": []
+ },
+ {
+  "source": "PUNCT review — misread fractions vs 1945 scan (user-validated; L077-0=½, L107-1x=3/16); 2026-06-23",
+  "applied": [
+   {
+    "note": "1¼/⅛/3¾/6¼/½/3-16 fraction fixes across L042-3,L043-0,L044-1x,L066-2,L067-0x,L077-0,L094-0,L107-1x"
+   }
+  ],
+  "skipped": []
  }
 ]
