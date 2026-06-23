@@ -4808,5 +4808,16 @@
    }
   ],
   "skipped": []
+ },
+ {
+  "source": "Bloggs letter de-polished to the book's raw rendering (no quotes, \"dont\"), per scan p99; 2026-06-23",
+  "applied": [
+   {
+    "id": "L099-0x",
+    "field": "body",
+    "note": "remove added quotes + restore dont (faithful raw style)"
+   }
+  ],
+  "skipped": []
  }
 ]
