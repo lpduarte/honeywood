@@ -60,6 +60,11 @@ limpeza manual → `cleaned.json` → **`render_email.py`** (email) e **`build_s
 - `build_site.py` — gera `./site` (calendário + páginas de leitura). Só revela cartas com `send_date <= hoje`.
 - `send.py` — envia o dia via Gmail SMTP. `--date`, `--catchup`, `--dry-run`, `--check`, `--force`.
 - `money.py` — conversão £(1924-26)→€ hoje, partilhada por email e site ("In today's money").
+- `metric.py` — conversão imperial→métrico (comprimento/peso/área), bloco **"In metric"** sob o do
+  dinheiro, partilhado por email e site. Apanha abreviaturas, hifenizadas (`2-in.`) e por extenso
+  (`Four feet nine`); áreas da disputa da janela vão a m². O texto das cartas fica **imperial intacto**
+  (só o bloco converte). Salta notas que explicam o próprio sistema imperial (`_EXPLAINS_IMPERIAL`,
+  ex. a nota da "área superficial" em L158-0 — convertê-la seria contrassenso).
 - `recipients.py` / `manage_recipients.py` — lista de destinatários (gist privado) e CLI.
 - `render.py` — renderizador de dia mais antigo, usado só pelo `__main__` de `build.py`; o email real vai por `render_email.py`.
 - Pipeline/QA: `extract.py`, `parse.py`, `rekey.py`, `qa_*.py`, `show_batch.py`, `show_uncleaned.py`, `test_data.py` (guard em CI).

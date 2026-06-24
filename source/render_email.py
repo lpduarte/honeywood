@@ -7,7 +7,7 @@ text on narrow screens, where a ~32-char justified column reads badly. Georgia i
 realistic font; EB Garamond is listed first for clients that happen to have it."""
 from __future__ import annotations
 import html, re, os
-import money
+import money, metric
 
 FONT = "'EB Garamond', Georgia, 'Times New Roman', serif"
 PAPER = '#e8e2d4'  # outer "desk" colour; always the fallback under the pattern image
@@ -125,6 +125,23 @@ def sheet(rec, tail=''):
           f'text-transform:uppercase;color:#b0a282;padding-bottom:8px;">In today\'s money</div>'
           f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0">{rr}</table></div>')
 
+    # "In metric" — sibling of the money block. Skip a note that explains the imperial
+    # system itself (the window-area joke), and drop the "≈" for a clean look like the money.
+    metric_html = ''
+    metric_text = rec['body'] + ('\n' + (rec.get('commentary') or '')
+                                 if not metric._EXPLAINS_IMPERIAL.search(rec.get('commentary') or '') else '')
+    krows = metric.rows(metric_text)
+    if krows:
+        rr = ''.join(
+            f'<tr><td class="mny" style="font-family:{FONT};font-size:15px;font-style:italic;color:#8a7c5e;padding:2px 0;">{esc(l)}</td>'
+            f'<td class="mny" align="right" style="font-family:{FONT};font-size:15px;font-style:italic;color:#8a7c5e;padding:2px 0;">{esc(e.replace("≈", ""))}</td></tr>'
+            for l, e in krows)
+        metric_html = (
+          f'<div style="border-top:1px dashed #ddd2b8;margin-top:14px;padding-top:14px;">'
+          f'<div style="font-family:{FONT};font-size:11px;letter-spacing:2px;'
+          f'text-transform:uppercase;color:#b0a282;padding-bottom:8px;">In metric</div>'
+          f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0">{rr}</table></div>')
+
     # An enclosure travels inside its covering letter, so it is delivered on the covering
     # letter's day — its own (earlier) date would otherwise be lost. Mark it and show that
     # date so the reader sees it was written before the letter that forwards it.
@@ -155,7 +172,7 @@ def sheet(rec, tail=''):
       f'<div style="font-family:{FONT};font-size:14.5px;font-weight:bold;color:#2b2620;padding-top:7px;">to {to_line}</div>'
       f'{encl_html}'
       f'<div style="border-bottom:1px solid #ddd2b8;font-size:0;line-height:0;margin:15px 0;">&nbsp;</div>'
-      f'{subject_html}{sal_html}{body_html}{closing_html}{note_html}{money_html}{tail}'
+      f'{subject_html}{sal_html}{body_html}{closing_html}{note_html}{money_html}{metric_html}{tail}'
       f'</td></tr></table></td></tr>')
 
 def email_day(recs, unsub_url=None):
