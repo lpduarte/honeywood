@@ -14,7 +14,7 @@ ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(ROOT / 'source'))
 from build import load_merged
 from render_email import split_salutation_closing, fmt_date_en, esc
-import money
+import money, metric
 
 calendar.setfirstweekday(0)
 SITE = ROOT / 'site'
@@ -77,6 +77,15 @@ def card_html(rec):
     if mrows:
         rr = ''.join('<div class="money-row"><span class="l">%s</span><span class="r">%s</span></div>' % (esc(l), e) for l, e in mrows)
         money_html = '<div class="money"><div class="money-h">In today’s money</div>%s</div>' % rr
+    # "In metric" — sibling of the money block; skip a note that explains the imperial system
+    # itself (the window-area joke), and drop the "≈" for a clean look like the money block.
+    metric_html = ''
+    com = rec.get('commentary') or ''
+    metric_text = rec['body'] + ('\n' + com if com and not metric._EXPLAINS_IMPERIAL.search(com) else '')
+    krows = metric.rows(metric_text)
+    if krows:
+        rr = ''.join('<div class="money-row"><span class="l">%s</span><span class="r">%s</span></div>' % (esc(l), esc(e.replace('≈', ''))) for l, e in krows)
+        metric_html = '<div class="money metric"><div class="money-h">In metric</div>%s</div>' % rr
     # An enclosure is delivered on its covering letter's day; show its own (earlier) date.
     encl_html = ''
     if rec.get('enclosure'):
@@ -85,8 +94,8 @@ def card_html(rec):
     if rec.get('chapter_start') and rec.get('chapter'):
         chap = '<div class="chapter"><span class="dash"></span>%s</div>' % esc(rec['chapter'])
     return (chap + '<div class="card"><div class="from">%s</div>%s<div class="to">to %s</div>%s'
-            '<div class="crule"></div>%s%s%s%s%s%s</div>'
-            % (esc(rec['from']), role_html, to_line, encl_html, subj, sal_html, body_html, clo_html, note_html, money_html))
+            '<div class="crule"></div>%s%s%s%s%s%s%s</div>'
+            % (esc(rec['from']), role_html, to_line, encl_html, subj, sal_html, body_html, clo_html, note_html, money_html, metric_html))
 
 # ---------- chrome ----------
 MOON = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M14 2a10 10 0 1 0 8 16A8 8 0 0 1 14 2z" fill="currentColor"/></svg>'
@@ -197,6 +206,7 @@ a.navchev:hover .chev{opacity:1;filter:saturate(1.35) brightness(1.05);}
 .note-h{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--note-label);margin-bottom:9px;}
 .note-b{font-size:17px;line-height:1.68;font-style:italic;color:var(--note-ink);text-align:justify;}
 .money{margin-top:20px;padding-top:14px;border-top:1px dashed var(--card-rule);}
+.money.metric{margin-top:14px;}
 .money-h{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--note-label);margin-bottom:9px;}
 .money-row{display:flex;justify-content:space-between;font-size:15px;color:var(--card-sub);padding:3px 0;}
 .money-row .r{font-variant-numeric:tabular-nums;}
