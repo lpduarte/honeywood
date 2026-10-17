@@ -6108,8 +6108,8 @@
   "seq": 264,
   "page": 116,
   "kind": "enclosure",
-  "book_date": "1925-08-28",
-  "send_date": "2027-08-28",
+  "book_date": "1925-08-23",
+  "send_date": "2027-08-27",
   "from_key": "LADY BRASH",
   "from": "Lady Brash",
   "from_role": null,
@@ -6124,7 +6124,8 @@
   "body_chars": 1026,
   "needs_date": false,
   "chapter": "Lady Brash Takes Charge",
-  "chapter_start": false
+  "chapter_start": false,
+  "enclosure": true
  },
  {
   "id": "L117-0",
